@@ -1,6 +1,6 @@
 # Compliance Documentation
 
-This folder contains the current regulatory and compliance reference material that should guide Day1Main product and operational decisions.
+This folder contains the current regulatory and compliance reference material that should guide Altira Orbit product and operational decisions.
 
 ## Current Scope
 

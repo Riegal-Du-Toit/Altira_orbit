@@ -383,7 +383,7 @@ export default function MemberDashboardPage() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Email</p>
-                  <p className="text-lg font-semibold">support@day1health.co.za</p>
+                  <p className="text-lg font-semibold">support@altiragroup.co.za</p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Hours</p>

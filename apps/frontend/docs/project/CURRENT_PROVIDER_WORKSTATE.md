@@ -1,4 +1,4 @@
-# Day1Main Provider Workstate
+# Altira Orbit Provider Workstate
 
 **Last updated:** July 12, 2026
 
@@ -38,7 +38,7 @@ Treat the following as current provider planning direction:
 - provider records are maintained in the database alongside members, brokers, products, and claims-related tables
 - provider access and permissions must follow the existing RLS and role model
 - provider claims features should plug into real claims data rather than separate mock workflows
-- provider documentation should support the active Day1Main architecture, not old one-off build plans
+- provider documentation should support the active Altira Orbit architecture, not old one-off build plans
 
 ## Near-Term Provider Work
 

@@ -206,7 +206,7 @@ export default function NewProductPage() {
                 <Label>Product Type</Label>
                 <div className="p-3 bg-blue-50 border border-blue-200 rounded-md mt-2">
                   <p className="text-sm text-blue-900">
-                    <strong>Medical Insurance</strong> - Day1Health operates as a medical insurer regulated by the FSCA
+                    <strong>Medical Insurance</strong> - Altira Orbit operates as a medical insurer regulated by the FSCA
                   </p>
                 </div>
               </div>

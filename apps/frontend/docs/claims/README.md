@@ -1,6 +1,6 @@
 # Claims Documentation
 
-This folder contains the active claims reference material for Day1Main, including hospital claims workspace planning, GOP/pre-authorization source documents, claim forms, and claims decision support material.
+This folder contains the active claims reference material for Altira Orbit, including hospital claims workspace planning, GOP/pre-authorization source documents, claim forms, and claims decision support material.
 
 ## Current Scope
 

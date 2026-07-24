@@ -11,7 +11,7 @@
  * - Final submission to database
  * 
  * This step consolidates what were previously Steps 8 (Terms) and 9 (Review)
- * Part of Day1Health 6-step application flow
+ * Part of Altira Orbit 6-step application flow
  */
 
 'use client'
@@ -72,13 +72,13 @@ export default function Step6ReviewTermsSubmit({ data, updateData, prevStep, goT
     
     // Match the actual brochure filenames in the brochures folder
     if (planName.includes('value plus hospital')) return '/brochures/Day 1 Health Value Plus Hospital Plan 2025.pdf'
-    if (planName.includes('value plus senior hospital')) return '/brochures/Day1 Health Value Plus Senior Hospital Plan 2025.pdf'
-    if (planName.includes('value plus')) return '/brochures/Day1 Health Value Plus Plan 2025.pdf'
-    if (planName.includes('executive hospital')) return '/brochures/Day1 Health Executive Hospital Plan 2025.pdf'
-    if (planName.includes('executive')) return '/brochures/Day1 Health Executive Plan 2025.pdf'
-    if (planName.includes('platinum hospital')) return '/brochures/Day1 Health Platinum Hospital Plan 2025.pdf'
-    if (planName.includes('platinum')) return '/brochures/Day1 Health Platinum Plan 2025.pdf'
-    if (planName.includes('senior comprehensive')) return '/brochures/Day1 Health Senior Comprehensive Plan 2025.pdf'
+    if (planName.includes('value plus senior hospital')) return '/brochures/Altira Orbit Value Plus Senior Hospital Plan 2025.pdf'
+    if (planName.includes('value plus')) return '/brochures/Altira Orbit Value Plus Plan 2025.pdf'
+    if (planName.includes('executive hospital')) return '/brochures/Altira Orbit Executive Hospital Plan 2025.pdf'
+    if (planName.includes('executive')) return '/brochures/Altira Orbit Executive Plan 2025.pdf'
+    if (planName.includes('platinum hospital')) return '/brochures/Altira Orbit Platinum Hospital Plan 2025.pdf'
+    if (planName.includes('platinum')) return '/brochures/Altira Orbit Platinum Plan 2025.pdf'
+    if (planName.includes('senior comprehensive')) return '/brochures/Altira Orbit Senior Comprehensive Plan 2025.pdf'
     
     // Default fallback to Value Plus Hospital
     return '/brochures/Day 1 Health Value Plus Hospital Plan 2025.pdf'
@@ -530,7 +530,7 @@ export default function Step6ReviewTermsSubmit({ data, updateData, prevStep, goT
           <h3 className="text-sm font-bold mb-2">📜 Terms & Conditions</h3>
           
           <div className="border border-gray-300 rounded p-2 max-h-32 overflow-y-auto bg-gray-50 text-xs mb-2">
-            <p className="font-bold mb-1">Day1Health Terms and Conditions</p>
+            <p className="font-bold mb-1">Altira Orbit Terms and Conditions</p>
             <p className="mb-1 flex justify-between items-center">
               <span><strong>1. Plan Brochure:</strong> View the cover plan brochure</span>
               <a
@@ -545,7 +545,7 @@ export default function Step6ReviewTermsSubmit({ data, updateData, prevStep, goT
             <p className="mb-1 flex justify-between items-center">
               <span><strong>2. Product Guide:</strong> View the complete product guide</span>
               <a
-                href="/brochures/Day1 Health Product Guide.pdf"
+                href="/brochures/Altira Orbit Product Guide.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-2 px-2 py-0.5 text-xs bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -700,7 +700,7 @@ export default function Step6ReviewTermsSubmit({ data, updateData, prevStep, goT
               className="mt-0.5"
             />
             <span className="text-xs font-medium">
-              I confirm that I have read, understood, and accept the terms and conditions. I authorize Day1Health to process my application and collect monthly premiums via debit order or EFT payment from my bank account.
+              I confirm that I have read, understood, and accept the terms and conditions. I authorize Altira Orbit to process my application and collect monthly premiums via debit order or EFT payment from my bank account.
             </span>
           </label>
         </div>
@@ -718,7 +718,7 @@ export default function Step6ReviewTermsSubmit({ data, updateData, prevStep, goT
                 className="mt-0.5"
               />
               <div>
-                <span className="text-xs font-medium">I consent to receive marketing communications from Day1Health</span>
+                <span className="text-xs font-medium">I consent to receive marketing communications from Altira Orbit</span>
                 <p className="text-xs text-gray-600 mt-0.5">
                   Receive information about new products, special offers, health tips, and policy updates.
                 </p>

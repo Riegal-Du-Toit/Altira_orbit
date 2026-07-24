@@ -1,8 +1,8 @@
-# Day1Main Netcash Workstate
+# Altira Orbit Netcash Workstate
 
 **Last updated:** July 12, 2026
 
-This document is the current Netcash reference for Day1Main.
+This document is the current Netcash reference for Altira Orbit.
 
 ## Current Direction
 
@@ -48,4 +48,4 @@ then it should be treated as historical and removed or rewritten.
 1. Confirm the real current debit-order workflow inside the Operations dashboard.
 2. Align Netcash docs with the current database and route structure.
 3. Add provider documentation from Netcash only when real API material or business flow confirmation is available.
-4. Keep reconciliation, refund, and webhook notes tied to the actual Day1Main implementation path.
+4. Keep reconciliation, refund, and webhook notes tied to the actual Altira Orbit implementation path.

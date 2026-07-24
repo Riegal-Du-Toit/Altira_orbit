@@ -1,6 +1,6 @@
 # Training Materials
 
-This folder contains internal training and onboarding material for staff-facing Day1Main workflows.
+This folder contains internal training and onboarding material for staff-facing Altira Orbit workflows.
 
 ## Typical Subjects
 

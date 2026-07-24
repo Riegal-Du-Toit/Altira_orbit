@@ -149,7 +149,7 @@ export default function MemberLayout({
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="flex items-center justify-between h-16 px-6 border-b">
-            <span className="text-xl font-bold text-blue-600">Day1Health</span>
+            <span className="text-xl font-bold text-blue-600">Orbit</span>
             <button
               onClick={() => setSidebarOpen(false)}
               className="lg:hidden text-gray-500 hover:text-gray-700"
@@ -222,7 +222,7 @@ export default function MemberLayout({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <span className="text-lg font-bold text-blue-600">Day1Health</span>
+          <span className="text-lg font-bold text-blue-600">Orbit</span>
           <div className="w-6" /> {/* Spacer */}
         </div>
 

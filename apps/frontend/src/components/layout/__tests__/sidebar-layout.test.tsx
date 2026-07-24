@@ -108,15 +108,15 @@ describe('SidebarLayout', () => {
     expect(claimsLink).toHaveClass('bg-primary');
   });
 
-  it('should render Day1Main logo', () => {
+  it('should render Orbit logo', () => {
     render(
       <SidebarLayout>
         <div>Test Content</div>
       </SidebarLayout>
     );
 
-    expect(screen.getByText('Day1Main')).toBeInTheDocument();
-    expect(screen.getByText('D1')).toBeInTheDocument();
+    expect(screen.getByText('Orbit')).toBeInTheDocument();
+    expect(screen.getByText('O')).toBeInTheDocument();
   });
 
   it('should render notification bell icon', () => {

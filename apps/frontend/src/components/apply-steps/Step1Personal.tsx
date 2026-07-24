@@ -10,7 +10,7 @@
  * - Address information
  * - Automatic lead capture to database
  * 
- * Part of Day1Health 6-step application flow
+ * Part of Altira Orbit 6-step application flow
  */
 
 'use client'
@@ -346,7 +346,7 @@ export default function Step1Personal({ data, updateData, nextStep }: Props) {
       
       <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-3" style={{ marginTop: '0px' }}>
-          <img src="/Logo.jpg" alt="Day1Health" style={{ height: '78px', width: 'auto' }} />
+          <span className="text-2xl font-bold text-gray-900">Altira Orbit</span>
           <h2 className="text-lg font-bold">Personal Information</h2>
         </div>
         

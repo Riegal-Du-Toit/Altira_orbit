@@ -590,7 +590,7 @@ export default function BrokerCommissionsPage() {
                 <p className="font-medium text-gray-900">Queries</p>
                 <p className="mt-1">
                   If you have questions about a commission statement, please contact broker support
-                  at broker-support@day1main.co.za or call 0860 123 456.
+                  at broker-support@altiragroup.co.za or call 0860 123 456.
                 </p>
               </div>
             </div>

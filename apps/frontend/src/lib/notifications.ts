@@ -57,7 +57,7 @@ export async function sendEmail(notification: EmailNotification): Promise<boolea
     //   },
     //   body: JSON.stringify({
     //     personalizations: [{ to: [{ email: notification.to }] }],
-    //     from: { email: 'noreply@day1health.com', name: 'Day1Health' },
+    //     from: { email: 'noreply@altiragroup.co.za', name: 'Altira Orbit' },
     //     subject: notification.subject,
     //     content: [{ type: 'text/html', value: notification.html }]
     //   })
@@ -162,7 +162,7 @@ function generateEmailContent(
           <p><strong>Service Date:</strong> ${data.serviceDate}</p>
           <p><strong>Claimed Amount:</strong> R${data.claimedAmount.toLocaleString()}</p>
           <p>You will receive a notification once your claim has been processed.</p>
-          <p>Best regards,<br>Day1Health Claims Team</p>
+          <p>Best regards,<br>Altira Orbit Claims Team</p>
         `,
         text: `Claim Submitted - ${data.claimNumber}. Claimed Amount: R${data.claimedAmount}. You will be notified once processed.`
       };
@@ -180,7 +180,7 @@ function generateEmailContent(
           <p><strong>Approved Amount:</strong> R${data.approvedAmount.toLocaleString()}</p>
           ${data.memberResponsibility > 0 ? `<p><strong>Your Responsibility:</strong> R${data.memberResponsibility.toLocaleString()}</p>` : ''}
           <p>Payment will be processed within 7 business days.</p>
-          <p>Best regards,<br>Day1Health Claims Team</p>
+          <p>Best regards,<br>Altira Orbit Claims Team</p>
         `,
         text: `Claim ${data.claimNumber} approved for R${data.approvedAmount}. Payment within 7 days.`
       };
@@ -195,10 +195,10 @@ function generateEmailContent(
           <p>Unfortunately, your claim has been rejected.</p>
           <p><strong>Claim Number:</strong> ${data.claimNumber}</p>
           <p><strong>Rejection Reason:</strong> ${data.rejectionReason}</p>
-          <p>If you believe this decision is incorrect, you may appeal by contacting our claims department at claims@day1health.com or calling 0800 123 456.</p>
-          <p>Best regards,<br>Day1Health Claims Team</p>
+          <p>If you believe this decision is incorrect, you may appeal by contacting our claims department at claims@altiragroup.co.za or calling 0800 123 456.</p>
+          <p>Best regards,<br>Altira Orbit Claims Team</p>
         `,
-        text: `Claim ${data.claimNumber} rejected. Reason: ${data.rejectionReason}. Contact claims@day1health.com to appeal.`
+        text: `Claim ${data.claimNumber} rejected. Reason: ${data.rejectionReason}. Contact claims@altiragroup.co.za to appeal.`
       };
 
     case 'claim_pended':
@@ -212,10 +212,10 @@ function generateEmailContent(
           <p><strong>Claim Number:</strong> ${data.claimNumber}</p>
           <p><strong>Reason:</strong> ${data.pendedReason}</p>
           ${data.additionalInfoRequested ? `<p><strong>Required Information:</strong> ${data.additionalInfoRequested}</p>` : ''}
-          <p>Please contact our claims department at claims@day1health.com or call 0800 123 456 to provide the required information.</p>
-          <p>Best regards,<br>Day1Health Claims Team</p>
+          <p>Please contact our claims department at claims@altiragroup.co.za or call 0800 123 456 to provide the required information.</p>
+          <p>Best regards,<br>Altira Orbit Claims Team</p>
         `,
-        text: `Claim ${data.claimNumber} pending. Reason: ${data.pendedReason}. Contact claims@day1health.com.`
+        text: `Claim ${data.claimNumber} pending. Reason: ${data.pendedReason}. Contact claims@altiragroup.co.za.`
       };
 
     case 'preauth_submitted':
@@ -230,7 +230,7 @@ function generateEmailContent(
           <p><strong>Service Date:</strong> ${data.serviceDate}</p>
           <p><strong>Estimated Cost:</strong> R${data.estimatedCost.toLocaleString()}</p>
           <p>You will receive a notification once your request has been reviewed.</p>
-          <p>Best regards,<br>Day1Health Pre-Authorization Team</p>
+          <p>Best regards,<br>Altira Orbit Pre-Authorization Team</p>
         `,
         text: `Pre-authorization ${data.preauthNumber} submitted. Estimated cost: R${data.estimatedCost}. You will be notified once reviewed.`
       };
@@ -247,7 +247,7 @@ function generateEmailContent(
           <p><strong>Approved Amount:</strong> R${data.approvedAmount.toLocaleString()}</p>
           <p><strong>Valid Until:</strong> ${data.validUntil}</p>
           <p>Please use this pre-authorization number when submitting your claim.</p>
-          <p>Best regards,<br>Day1Health Pre-Authorization Team</p>
+          <p>Best regards,<br>Altira Orbit Pre-Authorization Team</p>
         `,
         text: `Pre-authorization ${data.preauthNumber} approved for R${data.approvedAmount}. Valid until ${data.validUntil}.`
       };
@@ -262,10 +262,10 @@ function generateEmailContent(
           <p>Unfortunately, your pre-authorization request has been rejected.</p>
           <p><strong>Pre-Auth Number:</strong> ${data.preauthNumber}</p>
           <p><strong>Rejection Reason:</strong> ${data.rejectionReason}</p>
-          <p>If you believe this decision is incorrect, you may appeal by contacting our pre-authorization team at preauth@day1health.com or calling 0800 123 456.</p>
-          <p>Best regards,<br>Day1Health Pre-Authorization Team</p>
+          <p>If you believe this decision is incorrect, you may appeal by contacting our pre-authorization team at preauth@altiragroup.co.za or calling 0800 123 456.</p>
+          <p>Best regards,<br>Altira Orbit Pre-Authorization Team</p>
         `,
-        text: `Pre-authorization ${data.preauthNumber} rejected. Reason: ${data.rejectionReason}. Contact preauth@day1health.com to appeal.`
+        text: `Pre-authorization ${data.preauthNumber} rejected. Reason: ${data.rejectionReason}. Contact preauth@altiragroup.co.za to appeal.`
       };
 
     case 'preauth_expiring':
@@ -280,7 +280,7 @@ function generateEmailContent(
           <p><strong>Expires On:</strong> ${data.validUntil}</p>
           <p><strong>Days Remaining:</strong> ${data.daysRemaining}</p>
           <p>Please submit your claim before the expiry date or request a new pre-authorization.</p>
-          <p>Best regards,<br>Day1Health Pre-Authorization Team</p>
+          <p>Best regards,<br>Altira Orbit Pre-Authorization Team</p>
         `,
         text: `Pre-authorization ${data.preauthNumber} expires on ${data.validUntil} (${data.daysRemaining} days remaining).`
       };
@@ -297,7 +297,7 @@ function generateEmailContent(
           <p><strong>New Plan:</strong> ${data.upgradedPlan}</p>
           <p><strong>New Monthly Premium:</strong> R${data.newPremium.toLocaleString()}</p>
           <p>Your new plan is now active and you can start enjoying your enhanced benefits.</p>
-          <p>Best regards,<br>Day1Health Member Services</p>
+          <p>Best regards,<br>Altira Orbit Member Services</p>
         `,
         text: `Plan upgrade approved! New plan: ${data.upgradedPlan} at R${data.newPremium}/month.`
       };
@@ -314,7 +314,7 @@ function generateEmailContent(
           <p><strong>Relationship:</strong> ${data.relationship}</p>
           <p><strong>New Monthly Premium:</strong> R${data.newPremium.toLocaleString()}</p>
           <p>Your dependant is now covered under your plan.</p>
-          <p>Best regards,<br>Day1Health Member Services</p>
+          <p>Best regards,<br>Altira Orbit Member Services</p>
         `,
         text: `Dependant ${data.dependantName} added to your plan. New premium: R${data.newPremium}/month.`
       };
@@ -338,55 +338,55 @@ function generateSMSContent(
     case 'claim_submitted':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Claim ${data.claimNumber} submitted successfully. Amount: R${data.claimedAmount}. You will be notified once processed.`
+        message: `Altira Orbit: Claim ${data.claimNumber} submitted successfully. Amount: R${data.claimedAmount}. You will be notified once processed.`
       };
 
     case 'claim_approved':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Claim ${data.claimNumber} APPROVED for R${data.approvedAmount}. Payment within 7 days.`
+        message: `Altira Orbit: Claim ${data.claimNumber} APPROVED for R${data.approvedAmount}. Payment within 7 days.`
       };
 
     case 'claim_rejected':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Claim ${data.claimNumber} REJECTED. Reason: ${data.rejectionReason}. Call 0800 123 456 to appeal.`
+        message: `Altira Orbit: Claim ${data.claimNumber} REJECTED. Reason: ${data.rejectionReason}. Call 0800 123 456 to appeal.`
       };
 
     case 'claim_pended':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Claim ${data.claimNumber} PENDING. ${data.pendedReason}. Call 0800 123 456 for details.`
+        message: `Altira Orbit: Claim ${data.claimNumber} PENDING. ${data.pendedReason}. Call 0800 123 456 for details.`
       };
 
     case 'preauth_approved':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Pre-auth ${data.preauthNumber} APPROVED for R${data.approvedAmount}. Valid until ${data.validUntil}.`
+        message: `Altira Orbit: Pre-auth ${data.preauthNumber} APPROVED for R${data.approvedAmount}. Valid until ${data.validUntil}.`
       };
 
     case 'preauth_rejected':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Pre-auth ${data.preauthNumber} REJECTED. ${data.rejectionReason}. Call 0800 123 456.`
+        message: `Altira Orbit: Pre-auth ${data.preauthNumber} REJECTED. ${data.rejectionReason}. Call 0800 123 456.`
       };
 
     case 'preauth_expiring':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Pre-auth ${data.preauthNumber} expires in ${data.daysRemaining} days (${data.validUntil}). Submit claim soon.`
+        message: `Altira Orbit: Pre-auth ${data.preauthNumber} expires in ${data.daysRemaining} days (${data.validUntil}). Submit claim soon.`
       };
 
     case 'upgrade_approved':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Plan upgrade approved! New plan: ${data.upgradedPlan} at R${data.newPremium}/month.`
+        message: `Altira Orbit: Plan upgrade approved! New plan: ${data.upgradedPlan} at R${data.newPremium}/month.`
       };
 
     case 'dependant_approved':
       return {
         to: recipient.mobile!,
-        message: `Day1Health: Dependant ${data.dependantName} added. New premium: R${data.newPremium}/month.`
+        message: `Altira Orbit: Dependant ${data.dependantName} added. New premium: R${data.newPremium}/month.`
       };
 
     default:

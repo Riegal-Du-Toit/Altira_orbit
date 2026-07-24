@@ -1,4 +1,4 @@
-# Day1Main Medical Insurer Operating Model Reference
+# Altira Orbit Medical Insurer Operating Model Reference
 
 **Last updated:** July 11, 2026
 
@@ -6,7 +6,7 @@ This document preserves the useful business and compliance intent from older med
 
 ## Current Position
 
-Day1Main is being built as a South African health-insurance operating system, not as a medical scheme.
+Altira Orbit is being built as a South African health-insurance operating system, not as a medical scheme.
 
 The system must support member administration, products, brokers, providers, authorization, claims, hospital GOP processing, payments, collections, compliance, reporting, and auditability.
 
@@ -154,6 +154,6 @@ Reporting should cover:
 - compliance planning
 - operating model alignment
 - roadmap planning
-- checking whether new features fit the Day1Main system shape
+- checking whether new features fit the Altira Orbit system shape
 
 Do not use this document as a schema, migration, or exact route map.

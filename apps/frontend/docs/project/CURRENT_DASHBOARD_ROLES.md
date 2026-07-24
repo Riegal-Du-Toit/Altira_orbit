@@ -1,8 +1,8 @@
-# Day1Main Current Dashboard Roles
+# Altira Orbit Current Dashboard Roles
 
 ## Definition
 
-In Day1Main planning, a **role** means a unique dashboard or portal experience with its own sidebar, permissions surface, and day-to-day workflow.
+In Altira Orbit planning, a **role** means a unique dashboard or portal experience with its own sidebar, permissions surface, and day-to-day workflow.
 
 This is different from low-level RBAC/database roles. The database may contain extra technical roles for permissions, testing, or access control, but executive planning should use the dashboard roles below.
 

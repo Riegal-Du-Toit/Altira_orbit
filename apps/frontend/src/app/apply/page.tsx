@@ -63,7 +63,7 @@ export default function ApplyPage() {
       {/* Header */}
       <div className="bg-gradient-to-r from-green-600 to-green-700 border-b shadow-md">
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-white mb-3">Day1Health Application</h1>
+          <h1 className="text-3xl font-bold text-white mb-3">Altira Orbit Application</h1>
           {(source === 'broker' || source === 'call-centre') && (
             <div className="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-sm text-white border border-white/20 mb-3">
               {source === 'broker' ? 'Broker-assisted application' : 'Call-centre-assisted application'}

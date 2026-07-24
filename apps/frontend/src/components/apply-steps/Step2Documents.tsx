@@ -11,7 +11,7 @@
  * - Progress indicator (X of 3 documents uploaded)
  * - Verification form for OCR extracted data
  * 
- * Part of Day1Health 6-step application flow
+ * Part of Altira Orbit 6-step application flow
  */
 
 'use client'

@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 export function SpeedProcessConfirmation() {
   const steps = [
     { 
@@ -13,9 +11,9 @@ export function SpeedProcessConfirmation() {
       label: '1h'
     },
     { 
-      icon: '/day1.png', 
+      icon: '', 
       text: 'Covered in ONE day',
-      label: 'Day1'
+      label: '1d'
     },
   ];
 

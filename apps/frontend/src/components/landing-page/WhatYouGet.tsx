@@ -14,7 +14,7 @@ export function WhatYouGet() {
     <section className="py-20 px-4 md:px-8 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-navy-900 text-center mb-12">
-          Every Day1Health plan includes
+          Every Altira Orbit plan includes
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

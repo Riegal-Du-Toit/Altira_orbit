@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     // Email content with next 4 steps
     const emailContent = {
       to: 'applicant@example.com', // TODO: Replace with actual applicant email
-      subject: `Day1Health Application Confirmation - ${applicationRef}`,
+      subject: `Altira Orbit Application Confirmation - ${applicationRef}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
             <div class="content">
               <p>Dear Applicant,</p>
               
-              <p>Thank you for applying with Day1Health! Your application has been successfully submitted.</p>
+              <p>Thank you for applying with Altira Orbit! Your application has been successfully submitted.</p>
               
               <div class="ref-box">
                 <p style="margin: 0; font-size: 14px; color: #1e40af;">Your Application Reference Number:</p>
@@ -99,25 +99,25 @@ export async function POST(request: NextRequest) {
               <h3 style="color: #374151; margin-top: 30px;">Need Help?</h3>
               <p style="color: #6b7280;">
                 📞 Call us: <strong>0800 DAY1 HEALTH</strong><br>
-                📧 Email: <strong>applications@day1health.co.za</strong><br>
+                📧 Email: <strong>applications@altiragroup.co.za</strong><br>
                 ⏰ Hours: <strong>Monday - Friday: 8:00 AM - 5:00 PM</strong>
               </p>
             </div>
             
             <div class="footer">
-              <p>This is an automated confirmation email from Day1Health.</p>
-              <p style="margin: 5px 0;">© ${new Date().getFullYear()} Day1Health. All rights reserved.</p>
+              <p>This is an automated confirmation email from Altira Orbit.</p>
+              <p style="margin: 5px 0;">© ${new Date().getFullYear()} Altira Orbit. All rights reserved.</p>
             </div>
           </div>
         </body>
         </html>
       `,
       text: `
-Day1Health Application Confirmation
+Altira Orbit Application Confirmation
 
 Application Reference: ${applicationRef}
 
-Thank you for applying with Day1Health! Your application has been successfully submitted.
+Thank you for applying with Altira Orbit! Your application has been successfully submitted.
 
 What Happens Next?
 
@@ -135,12 +135,12 @@ What Happens Next?
 
 Need Help?
 Call us: 0800 DAY1 HEALTH
-Email: applications@day1health.co.za
+Email: applications@altiragroup.co.za
 Hours: Monday - Friday: 8:00 AM - 5:00 PM
 
 Please keep this email safe - You may need your reference number for future correspondence.
 
-© ${new Date().getFullYear()} Day1Health. All rights reserved.
+© ${new Date().getFullYear()} Altira Orbit. All rights reserved.
       `.trim()
     }
 
@@ -148,7 +148,7 @@ Please keep this email safe - You may need your reference number for future corr
     // Example with SendGrid:
     // await sendEmail({
     //   to: applicantEmail,
-    //   from: 'noreply@day1health.co.za',
+    //   from: 'noreply@altiragroup.co.za',
     //   subject: emailContent.subject,
     //   html: emailContent.html,
     //   text: emailContent.text,

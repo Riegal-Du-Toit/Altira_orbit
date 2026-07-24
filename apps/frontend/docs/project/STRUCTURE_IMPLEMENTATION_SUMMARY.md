@@ -1,4 +1,4 @@
-# Day1Main Project Structure Summary
+# Altira Orbit Project Structure Summary
 
 **Last updated:** July 12, 2026
 
@@ -7,7 +7,7 @@ This document replaces older project structure notes. The single documentation h
 ## Repository Shape
 
 ```text
-day1main-system/
+altira-orbit-system/
 ├── apps/
 │   └── frontend/              # Next.js application
 ├── apps/frontend/docs/        # Single project documentation home
@@ -25,7 +25,7 @@ apps/frontend/
 │   ├── contexts/              # Auth and app context providers
 │   ├── lib/                   # API clients, Supabase helpers, utilities
 │   └── types/                 # Shared TypeScript types
-├── docs/                      # Consolidated Day1Main documentation
+├── docs/                      # Consolidated Altira Orbit documentation
 ├── public/                    # Static assets
 ├── scripts/                   # Data import, OCR, validation, and utility scripts
 └── package.json               # Frontend scripts and dependencies
@@ -33,7 +33,7 @@ apps/frontend/
 
 ## Current Dashboard Roles
 
-In Day1Main planning, a role means a dashboard or portal experience, not a low-level RBAC/database role.
+In Altira Orbit planning, a role means a dashboard or portal experience, not a low-level RBAC/database role.
 
 1. Admin
 2. Operations

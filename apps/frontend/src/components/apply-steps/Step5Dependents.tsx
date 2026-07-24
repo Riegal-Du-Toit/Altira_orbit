@@ -7,7 +7,7 @@
  * - Children require birth certificate
  * - Optional step - can proceed without dependants
  * 
- * Part of Day1Health 6-step application flow
+ * Part of Altira Orbit 6-step application flow
  */
 
 'use client'

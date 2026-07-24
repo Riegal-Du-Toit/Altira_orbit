@@ -14,9 +14,9 @@ export default function ScheduledReportsPage() {
   const [showCreateForm, setShowCreateForm] = useState(false);
 
   const [schedules] = useState([
-    { id: '1', name: 'Daily Claims Summary', report: 'Claims Analytics', frequency: 'Daily', time: '06:00', recipients: 'claims@day1main.co.za', status: 'active', nextRun: '2024-01-12T06:00:00' },
-    { id: '2', name: 'Weekly Financial Report', report: 'Loss Ratio Analysis', frequency: 'Weekly', time: '08:00', recipients: 'finance@day1main.co.za', status: 'active', nextRun: '2024-01-15T08:00:00' },
-    { id: '3', name: 'Monthly Member Report', report: 'Member Movement', frequency: 'Monthly', time: '09:00', recipients: 'admin@day1main.co.za', status: 'active', nextRun: '2024-02-01T09:00:00' },
+    { id: '1', name: 'Daily Claims Summary', report: 'Claims Analytics', frequency: 'Daily', time: '06:00', recipients: 'claims@altiragroup.co.za', status: 'active', nextRun: '2024-01-12T06:00:00' },
+    { id: '2', name: 'Weekly Financial Report', report: 'Loss Ratio Analysis', frequency: 'Weekly', time: '08:00', recipients: 'finance@altiragroup.co.za', status: 'active', nextRun: '2024-01-15T08:00:00' },
+    { id: '3', name: 'Monthly Member Report', report: 'Member Movement', frequency: 'Monthly', time: '09:00', recipients: 'admin@altiragroup.co.za', status: 'active', nextRun: '2024-02-01T09:00:00' },
   ]);
 
   useEffect(() => {

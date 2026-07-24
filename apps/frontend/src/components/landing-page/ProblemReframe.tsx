@@ -16,7 +16,7 @@ export function ProblemReframe() {
             Big decisions. Too many options. Too much fine print.
           </p>
           <p className="font-medium text-slate-700">
-            Day1Health was built to remove that delay — without cutting corners.
+            Altira Orbit was built to remove that delay — without cutting corners.
           </p>
         </div>
       </div>

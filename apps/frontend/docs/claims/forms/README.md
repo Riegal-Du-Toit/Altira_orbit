@@ -2,7 +2,7 @@
 
 This folder contains the claim-form source documents used for claims intake, document comparison, and future member-upload flows.
 
-## Current Use In Day1Main
+## Current Use In Altira Orbit
 
 - hospital claim forms support the hospital claims register workflow
 - claim forms should usually be compared against an existing GOP-backed claim record, not treated as a brand-new live claim by default

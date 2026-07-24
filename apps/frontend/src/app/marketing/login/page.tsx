@@ -64,7 +64,7 @@ export default function MarketingLoginPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="you@day1main.com"
+                placeholder="you@altiragroup.co.za"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

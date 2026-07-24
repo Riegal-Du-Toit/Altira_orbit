@@ -1,6 +1,6 @@
 # Dashboard Role Navigation Reference
 
-This guide records the current role-based navigation model. In Day1Main planning, a **role** means a unique dashboard or portal lane with its own sidebar and workflow. RBAC and database roles may be more granular.
+This guide records the current role-based navigation model. In Altira Orbit planning, a **role** means a unique dashboard or portal lane with its own sidebar and workflow. RBAC and database roles may be more granular.
 
 Current dashboard role reference: `apps/frontend/docs/project/CURRENT_DASHBOARD_ROLES.md`
 
@@ -126,42 +126,42 @@ Use these only as test/demo references while they remain active in the environme
 
 **1. Admin:**
 ```
-Email: admin@day1main.com
+Email: admin@altiragroup.co.za
 Password: admin123
 Expected: See "Admin Dashboard", "Members", "Policies", etc.
 ```
 
 **2. Member:**
 ```
-Email: member@day1main.com
+Email: member@altiragroup.co.za
 Password: member123
 Expected: See "Dashboard", "My Policies", "My Claims", etc.
 ```
 
 **3. Broker:**
 ```
-Email: broker@day1main.com
+Email: broker@altiragroup.co.za
 Password: broker123
 Expected: See "Dashboard", "My Clients", "Commissions", etc.
 ```
 
 **4. Claims Assessor:**
 ```
-Email: assessor@day1main.com
+Email: assessor@altiragroup.co.za
 Password: assessor123
 Expected: See "Dashboard", "Claims Queue", "My Claims"
 ```
 
 **5. Finance Manager:**
 ```
-Email: finance@day1main.com
+Email: finance@altiragroup.co.za
 Password: finance123
 Expected: See "Dashboard", "Payments", "Reconciliations", "Reports"
 ```
 
 **6. Compliance Officer:**
 ```
-Email: compliance@day1main.com
+Email: compliance@altiragroup.co.za
 Password: compliance123
 Expected: See default member navigation
 ```

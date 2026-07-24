@@ -17,8 +17,8 @@ export default function ReportsDashboardPage() {
   ]);
 
   const [scheduledReports] = useState([
-    { id: '1', name: 'Daily Claims Summary', frequency: 'Daily', nextRun: '2024-01-12T06:00:00', recipients: 'claims@day1main.co.za' },
-    { id: '2', name: 'Weekly Financial Report', frequency: 'Weekly', nextRun: '2024-01-15T08:00:00', recipients: 'finance@day1main.co.za' },
+    { id: '1', name: 'Daily Claims Summary', frequency: 'Daily', nextRun: '2024-01-12T06:00:00', recipients: 'claims@altiragroup.co.za' },
+    { id: '2', name: 'Weekly Financial Report', frequency: 'Weekly', nextRun: '2024-01-15T08:00:00', recipients: 'finance@altiragroup.co.za' },
   ]);
 
   useEffect(() => {

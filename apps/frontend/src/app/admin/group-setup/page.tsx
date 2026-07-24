@@ -208,7 +208,7 @@ export default function GroupSetupPage() {
                     required
                     value={formData.group_name || ''}
                     onChange={(e) => setFormData({ ...formData, group_name: e.target.value })}
-                    placeholder="e.g., Day1 Health Group 1"
+                    placeholder="e.g., Altira Orbit Group 1"
                   />
                 </div>
                 <div>

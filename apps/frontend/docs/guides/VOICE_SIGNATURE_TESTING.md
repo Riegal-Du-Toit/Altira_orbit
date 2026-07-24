@@ -21,7 +21,7 @@
 2. **Record Voice:**
    - Click "🎤 Start Recording" button
    - Browser will request microphone permission - click "Allow"
-   - Speak clearly: "I, [Your Name], accept the terms and conditions of Day1Health"
+   - Speak clearly: "I, [Your Name], accept the terms and conditions of Altira Orbit"
    - Click "⏹ Stop Recording"
 
 3. **Verify Upload:**
@@ -86,7 +86,7 @@
 
 1. **Login as Admin:**
    - Go to http://localhost:3001/login
-   - Email: admin@day1main.com
+   - Email: admin@altiragroup.co.za
    - Password: admin123
 
 2. **View Application:**

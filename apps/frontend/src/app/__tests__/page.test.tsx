@@ -11,7 +11,8 @@ jest.mock('next/link', () => {
 describe('Landing Page', () => {
   it('should render the page', () => {
     render(<Home />);
-    expect(screen.getByText('Day1Main')).toBeInTheDocument();
+    expect(screen.getByText('Welcome to')).toBeInTheDocument();
+    expect(screen.getByText('Altira Orbit')).toBeInTheDocument();
   });
 
   it('should render hero section with main heading', () => {
@@ -77,7 +78,7 @@ describe('Landing Page', () => {
 
   it('should render copyright notice', () => {
     render(<Home />);
-    expect(screen.getByText(/© 2026 Day1Main. All rights reserved./)).toBeInTheDocument();
+    expect(screen.getByText(/© 2026 Altira Orbit. All rights reserved./)).toBeInTheDocument();
   });
 
   describe('Navigation Links', () => {

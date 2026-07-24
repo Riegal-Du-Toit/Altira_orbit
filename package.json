@@ -1,8 +1,8 @@
 {
-  "name": "day1main",
+  "name": "altira-orbit",
   "version": "1.0.0",
   "private": true,
-  "description": "Day1Main - South African Medical Insurer Operating System",
+  "description": "Altira Orbit - South African Medical Insurer Operating System",
   "scripts": {
     "predev": "node scripts/policy-data/kill-duplicate-ports.js",
     "dev": "pnpm --parallel -r dev",
@@ -24,7 +24,7 @@
     "south-africa",
     "compliance"
   ],
-  "author": "Day1Main Team",
+  "author": "Altira Orbit Team",
   "license": "PROPRIETARY",
   "packageManager": "pnpm@8.15.0",
   "engines": {

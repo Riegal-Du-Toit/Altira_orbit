@@ -1083,9 +1083,9 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             <div className="flex h-16 items-center border-b border-gray-200 px-4">
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                  <span className="text-sm font-bold text-white">D1</span>
+                  <span className="text-sm font-bold text-white">O</span>
                 </div>
-                <span className="text-lg font-bold text-gray-900">Day1Main</span>
+                <span className="text-lg font-bold text-gray-900">Orbit</span>
               </div>
             </div>
             <div className="space-y-3 px-3 py-4">
@@ -1129,15 +1129,15 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             {!sidebarCollapsed && (
               <Link href="/dashboard" className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">D1</span>
+                  <span className="text-white font-bold text-sm">O</span>
                 </div>
-                <span className="text-lg font-bold text-gray-900">Day1Main</span>
+                <span className="text-lg font-bold text-gray-900">Orbit</span>
               </Link>
             )}
             {sidebarCollapsed && (
               <Link href="/dashboard" className="flex items-center justify-center w-full">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">D1</span>
+                  <span className="text-white font-bold text-sm">O</span>
                 </div>
               </Link>
             )}

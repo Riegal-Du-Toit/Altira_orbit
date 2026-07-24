@@ -1,6 +1,6 @@
-# Day1Main Documentation
+# Altira Orbit Documentation
 
-This is the single documentation home for the Day1Main project.
+This is the single documentation home for the Altira Orbit project.
 
 ## Start Here
 
@@ -16,7 +16,7 @@ This is the single documentation home for the Day1Main project.
 
 ## Current Dashboard Roles
 
-In Day1Main planning, a **role** means a unique dashboard or portal experience with its own sidebar and workflow.
+In Altira Orbit planning, a **role** means a unique dashboard or portal experience with its own sidebar and workflow.
 
 1. Admin
 2. Operations

@@ -10,7 +10,7 @@
  * - Hospital admissions (past 5 years)
  * - Previous Medical Aid membership
  * 
- * Part of Day1Health 6-step application flow
+ * Part of Altira Orbit 6-step application flow
  */
 
 'use client'

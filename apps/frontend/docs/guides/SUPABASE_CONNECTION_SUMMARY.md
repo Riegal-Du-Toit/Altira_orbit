@@ -1,4 +1,4 @@
-# Supabase Connection Summary - Day1Health
+# Supabase Connection Summary - Altira Orbit
 
 ## Status
 

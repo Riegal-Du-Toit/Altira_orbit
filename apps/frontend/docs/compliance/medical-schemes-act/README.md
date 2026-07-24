@@ -1,6 +1,6 @@
 # Medical Schemes Act Documentation
 
-This folder contains Medical Schemes Act reference material relevant to Day1Main operations and product behavior.
+This folder contains Medical Schemes Act reference material relevant to Altira Orbit operations and product behavior.
 
 ## Typical Coverage
 

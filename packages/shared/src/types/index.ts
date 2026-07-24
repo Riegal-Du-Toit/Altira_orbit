@@ -1,4 +1,4 @@
-// Common types used across Day1Main
+// Common types used across Altira Orbit
 
 export type Regime = 'medical_scheme' | 'insurance'
 

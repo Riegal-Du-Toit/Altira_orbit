@@ -51,9 +51,9 @@ export function Hero() {
           <div className="flex flex-col items-center opacity-75 mt-2">
             <div className="flex items-center gap-2">
               <div className="w-9 h-9 flex items-center justify-center">
-                <img src="/day1.png" alt="Day 1" className="w-[80%] h-[80%] opacity-90" />
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-emerald-500 text-sm font-bold text-emerald-700">1d</span>
               </div>
-              <span className="text-gray-900 font-semibold" style={{ fontSize: '15px' }}>Day1</span>
+              <span className="text-gray-900 font-semibold" style={{ fontSize: '15px' }}>Orbit</span>
             </div>
             <p className="text-xs text-center mt-[7px]">Covered in <span className="text-emerald-600 font-semibold">ONE</span> day</p>
           </div>

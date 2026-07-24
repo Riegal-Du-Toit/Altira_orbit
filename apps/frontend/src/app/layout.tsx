@@ -7,7 +7,7 @@ import { ToastProvider } from '@/components/ui/toast'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Day1Main - Medical Insurer Operating System',
+  title: 'Altira Orbit - Medical Insurer Operating System',
   description: 'South African medical insurer and health-financing operating system',
 }
 

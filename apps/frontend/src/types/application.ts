@@ -1,4 +1,4 @@
-// Application Data Types for Day1Health Onboarding
+// Application Data Types for Altira Orbit Onboarding
 
 export interface ApplicationData {
   // Contact/Plan Info

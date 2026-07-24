@@ -1,6 +1,6 @@
 # Netcash Collection Documentation
 
-This folder is the single source of truth for Day1Main Netcash collection, debit order, transaction, refund, and webhook documentation.
+This folder is the single source of truth for Altira Orbit Netcash collection, debit order, transaction, refund, and webhook documentation.
 
 ## Current Project Direction
 
@@ -23,7 +23,7 @@ Use this folder when working on:
 - [CURRENT_NETCASH_WORKSTATE.md](./CURRENT_NETCASH_WORKSTATE.md) - current Netcash implementation direction and scope
 - [MONEY_COLLECTION_METHODS.md](./MONEY_COLLECTION_METHODS.md) - collection methods and operational overview
 - [WEBHOOK_TESTING_GUIDE.md](./WEBHOOK_TESTING_GUIDE.md) - Netcash webhook testing and handling
-- [DAY1HEALTH_DATABASE_SCHEMA.md](./DAY1HEALTH_DATABASE_SCHEMA.md) - payment/debit-order schema notes
+- [ALTIRA_ORBIT_DATABASE_SCHEMA.md](./ALTIRA_ORBIT_DATABASE_SCHEMA.md) - payment/debit-order schema notes
 
 ## Build Rule
 

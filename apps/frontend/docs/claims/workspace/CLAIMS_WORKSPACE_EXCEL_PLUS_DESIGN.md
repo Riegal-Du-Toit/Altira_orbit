@@ -4,7 +4,7 @@
 
 ## Project Objective
 
-Build a modern web-based **Hospital Claims Workspace** for Day1 Health.
+Build a modern web-based **Hospital Claims Workspace** for Altira Orbit.
 
 **This is NOT a completely new claims system.**
 

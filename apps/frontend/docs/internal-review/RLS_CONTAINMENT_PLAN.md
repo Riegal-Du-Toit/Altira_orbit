@@ -163,7 +163,7 @@ Current verification status as of 2026-06-01:
 
 - `anon` verification passed: sensitive tables returned 0 rows
 - `service_role` verification passed: privileged backend access still works
-- authenticated staff spot check passed using `admin@day1main.com`
+- authenticated staff spot check passed using `admin@altiragroup.co.za`
   - `users`, `roles`, `user_roles`, `permissions`, and `role_permissions` returned the caller's scoped rows
   - `members`, `member_dependants`, `claims`, and `providers` remained readable for the authenticated admin role
 

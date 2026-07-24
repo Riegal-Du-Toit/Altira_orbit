@@ -122,15 +122,15 @@ export default function OnboardingLayout({
             {!sidebarCollapsed && (
               <Link href="/onboarding" className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">D1</span>
+                  <span className="text-white font-bold text-sm">O</span>
                 </div>
-                <span className="text-lg font-bold text-gray-900">Day1Main</span>
+                <span className="text-lg font-bold text-gray-900">Orbit</span>
               </Link>
             )}
             {sidebarCollapsed && (
               <Link href="/onboarding" className="flex items-center justify-center w-full">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">D1</span>
+                  <span className="text-white font-bold text-sm">O</span>
                 </div>
               </Link>
             )}

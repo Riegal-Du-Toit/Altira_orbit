@@ -52,7 +52,7 @@ export function WhyThisWorks() {
           </h2>
           <div className="max-w-3xl mx-auto space-y-4 text-lg text-gray-700 leading-relaxed">
             <p>
-              Traditional medical aid makes you choose a full plan first. Day1Health flips that.
+              Traditional medical aid makes you choose a full plan first. Altira Orbit flips that.
             </p>
           </div>
         </div>

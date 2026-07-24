@@ -1,4 +1,4 @@
-# Day1Main Technology Stack
+# Altira Orbit Technology Stack
 
 **Last updated:** July 12, 2026
 

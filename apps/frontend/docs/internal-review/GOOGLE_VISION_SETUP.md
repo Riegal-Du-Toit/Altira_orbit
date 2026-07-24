@@ -2,7 +2,7 @@
 
 **Last updated:** July 12, 2026
 
-Day1Main uses Google Cloud Vision for OCR where configured, with local fallback OCR where needed.
+Altira Orbit uses Google Cloud Vision for OCR where configured, with local fallback OCR where needed.
 
 ## Current Authentication Pattern
 

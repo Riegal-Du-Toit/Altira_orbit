@@ -610,7 +610,7 @@ export default function ProviderPaymentsPage() {
                 <p className="font-medium text-gray-900">Payment Queries</p>
                 <p className="mt-1">
                   If you have questions about a payment or remittance advice, please contact our
-                  provider support team at provider-support@day1main.co.za or call 0860 123 456.
+                  provider support team at provider-support@altiragroup.co.za or call 0860 123 456.
                 </p>
               </div>
             </div>

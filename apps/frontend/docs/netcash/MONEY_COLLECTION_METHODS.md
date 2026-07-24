@@ -13,7 +13,7 @@ The system uses Netcash for debit order collection planning and processing.
 - 1 debit order per group (covers all members in that group)
 - 11 groups total
 - Group company pays total amount for all members
-- Example: Day1 Health (Pty) Ltd - 7 members, total R4789.00
+- Example: Altira Orbit group - 7 members, total R4789.00
 
 ---
 

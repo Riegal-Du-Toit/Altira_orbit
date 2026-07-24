@@ -7,7 +7,7 @@
  * - Account number and branch code
  * - Debit order day (1-28 of each month) - Calendar style picker
  * 
- * Part of Day1Health 6-step application flow
+ * Part of Altira Orbit 6-step application flow
  */
 
 'use client'
