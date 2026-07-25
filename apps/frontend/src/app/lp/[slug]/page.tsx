@@ -9,9 +9,9 @@ import { FromConfusionToCover } from '@/components/landing-page/FromConfusionToC
 import { WhatMattersMost } from '@/components/landing-page/WhatMattersMost';
 import { SpeedProcessConfirmation } from '@/components/landing-page/SpeedProcessConfirmation';
 import { PlanComparisonDemoted } from '@/components/landing-page/PlanComparisonDemoted';
-import { FinalCTA } from '@/components/landing-page/FinalCTA';
 import { BottomCTA } from '@/components/landing-page/BottomCTA';
 import { Footer } from '@/components/landing-page/Footer';
+import { FunnelSection, FunnelSectionPreview } from '@/components/funnel/funnel-sections';
 
 interface LandingPage {
   id: string;
@@ -22,6 +22,10 @@ interface LandingPage {
   template: string;
   content: any;
   status: string;
+}
+
+function normalizeTemplateName(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
 export default function LandingPageView() {
@@ -83,7 +87,7 @@ export default function LandingPageView() {
   }
 
   // Render based on template
-  if (landingPage.template === 'altira-orbit') {
+  if (normalizeTemplateName(landingPage.template) === 'altiraorbit') {
     return (
       <main className="min-h-screen">
         <Hero />
@@ -94,6 +98,16 @@ export default function LandingPageView() {
         <PlanComparisonDemoted />
         <BottomCTA />
         <Footer />
+      </main>
+    );
+  }
+
+  if (landingPage.template === 'funnel-builder' && Array.isArray(landingPage.content?.sections)) {
+    return (
+      <main className="min-h-screen bg-white">
+        {landingPage.content.sections.map((section: FunnelSection) => (
+          <FunnelSectionPreview key={section.id} section={section} />
+        ))}
       </main>
     );
   }

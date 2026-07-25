@@ -232,7 +232,7 @@ export default function LandingPagesPage() {
                             {page.template}
                           </span>
                         </div>
-                        <p className="text-sm text-gray-600 mb-1">/promo/{page.slug}</p>
+                        <p className="text-sm text-gray-600 mb-1">/lp/{page.slug}</p>
                         <p className="text-xs text-gray-500">{page.description}</p>
                       </div>
                     </div>
