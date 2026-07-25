@@ -10,8 +10,13 @@ const { Client } = require('pg');
 async function runMigration() {
   console.log('🚀 Running Payment Groups Migration...\n');
 
+  const connectionString = process.env.TARGET_DB_URL || process.env.DATABASE_URL;
+  if (!connectionString) {
+    throw new Error('Missing required environment variable: TARGET_DB_URL or DATABASE_URL');
+  }
+
   const client = new Client({
-    connectionString: 'postgresql://postgres.ldygmpaipxbokxzyzyti:Day1Main2026!@aws-0-eu-central-1.pooler.supabase.com:6543/postgres',
+    connectionString,
     ssl: { rejectUnauthorized: false }
   });
 

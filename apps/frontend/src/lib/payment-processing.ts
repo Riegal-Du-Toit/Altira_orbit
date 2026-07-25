@@ -168,7 +168,7 @@ export function generateEFTFile(batch: PaymentBatch): string {
 function generateEFTHeader(batch: PaymentBatch): string {
   const recordType = '1';
   const serviceType = '001'; // Credit
-  const userCode = 'DAY1HEALTH'.padEnd(10, ' ');
+  const userCode = 'ALTIRAORB'.padEnd(10, ' ');
   const creationDate = new Date().toISOString().split('T')[0].replace(/-/g, '');
   const batchNumber = batch.batch_number.padEnd(20, ' ');
   

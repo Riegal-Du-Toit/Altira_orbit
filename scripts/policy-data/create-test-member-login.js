@@ -19,7 +19,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
 });
 
 const MEMBER_NUMBER = 'TESTMEM001';
-const EMAIL = 'test.member@day1health.test';
+const EMAIL = 'test.member@altira-orbit.test';
 const PIN = '1234';
 const PIN_HASH_ROUNDS = 10;
 

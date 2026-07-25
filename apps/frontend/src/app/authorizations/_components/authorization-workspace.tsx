@@ -529,7 +529,7 @@ function GopIntakeView() {
       });
 
       if (typeof window !== 'undefined') {
-        window.dispatchEvent(new Event('day1:gop-intake-updated'));
+        window.dispatchEvent(new Event('altira:gop-intake-updated'));
       }
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : 'Failed to submit GOP document');

@@ -1,4 +1,4 @@
--- Emergency RLS containment for Day1Health
+-- Emergency RLS containment for Altira Orbit
 -- Date: 2026-06-01
 --
 -- Purpose:

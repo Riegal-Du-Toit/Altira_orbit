@@ -2,7 +2,7 @@
 
 Date: 2026-06-01
 
-This document translates the verified security findings into an immediate containment plan that matches the actual Day1 data model.
+This document translates the verified security findings into an immediate containment plan that matches the actual Altira data model.
 
 ## Current verified state
 

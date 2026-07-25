@@ -17,7 +17,7 @@
  *   TARGET_COMPOSE_FILES=/opt/supabase-project/docker-compose.yml,/opt/supabase-project/docker-compose.pg17.yml
  *   TARGET_COMPOSE_SERVICE=db
  *   TARGET_SSH_HOST=169.255.58.175
- *   TARGET_SSH_USER=day1admin
+ *   TARGET_SSH_USER=altiraadmin
  *   TARGET_SSH_PORT=22
  *   TARGET_SSH_KEY=C:\\Users\\you\\.ssh\\id_ed25519
  *   TARGET_REMOTE_SUDO_PASSWORD=your-server-sudo-password
@@ -50,7 +50,7 @@ const TARGET_COMPOSE_FILES = (process.env.TARGET_COMPOSE_FILES || '')
   .filter(Boolean);
 const TARGET_COMPOSE_SERVICE = process.env.TARGET_COMPOSE_SERVICE || 'db';
 const TARGET_SSH_HOST = process.env.TARGET_SSH_HOST;
-const TARGET_SSH_USER = process.env.TARGET_SSH_USER || 'day1admin';
+const TARGET_SSH_USER = process.env.TARGET_SSH_USER || 'altiraadmin';
 const TARGET_SSH_PORT = process.env.TARGET_SSH_PORT || '22';
 const TARGET_SSH_KEY = process.env.TARGET_SSH_KEY;
 const TARGET_SSH_BIN = process.env.TARGET_SSH_BIN || (process.platform === 'win32'

@@ -7,7 +7,7 @@ if (!SUPABASE_URL) throw new Error("Missing required environment variable: NEXT_
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!SERVICE_KEY) throw new Error("Missing required environment variable: SUPABASE_SERVICE_ROLE_KEY");
 
-const BASE_URL = 'https://day1main-system.vercel.app';
+const BASE_URL = 'https://altira-orbit-system.vercel.app';
 
 const dashboards = [
   { role: 'Admin', url: '/api/admin/applications' },

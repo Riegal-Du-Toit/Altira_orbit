@@ -6,7 +6,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-async function findHighestDay1Member() {
+async function findHighestAltiraMember() {
   console.log('🔍 Finding highest DAY1xxxxx member number...\n');
   
   // First get total count of all members
@@ -17,7 +17,7 @@ async function findHighestDay1Member() {
   console.log(`Total members in database: ${totalCount}\n`);
   
   // Get ALL members with member_number starting with DAY1 (no limit)
-  let allDay1Members = [];
+  let allAltiraMembers = [];
   let page = 0;
   const pageSize = 1000;
   let hasMore = true;
@@ -38,13 +38,13 @@ async function findHighestDay1Member() {
     if (members.length === 0) {
       hasMore = false;
     } else {
-      allDay1Members = allDay1Members.concat(members);
+      allAltiraMembers = allAltiraMembers.concat(members);
       page++;
-      console.log(`Fetched ${allDay1Members.length} DAY1 members so far...`);
+      console.log(`Fetched ${allAltiraMembers.length} DAY1 members so far...`);
     }
   }
   
-  const members = allDay1Members;
+  const members = allAltiraMembers;
   console.log(`\nTotal DAY1 members found: ${members.length}\n`);
 
   if (members.length > 0) {
@@ -68,4 +68,4 @@ async function findHighestDay1Member() {
   }
 }
 
-findHighestDay1Member().catch(console.error);
+findHighestAltiraMember().catch(console.error);

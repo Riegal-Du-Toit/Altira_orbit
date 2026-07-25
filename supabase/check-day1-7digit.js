@@ -6,11 +6,11 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-async function checkDay17Digit() {
+async function checkAltira7Digit() {
   console.log('🔍 Checking DAY1 + 7 digit format...\n');
   
   // Get ALL members with member_number starting with DAY1
-  let allDay1Members = [];
+  let allAltiraMembers = [];
   let page = 0;
   const pageSize = 1000;
   let hasMore = true;
@@ -30,13 +30,13 @@ async function checkDay17Digit() {
     if (members.length === 0) {
       hasMore = false;
     } else {
-      allDay1Members = allDay1Members.concat(members);
+      allAltiraMembers = allAltiraMembers.concat(members);
       page++;
     }
   }
   
   // Filter to only 7-digit sequences (DAY1XXXXXXX format)
-  const sevenDigit = allDay1Members
+  const sevenDigit = allAltiraMembers
     .filter(m => /^DAY1\d{7}$/.test(m.member_number))
     .map(m => ({
       number: m.member_number,
@@ -69,13 +69,13 @@ async function checkDay17Digit() {
   // Show all formats
   console.log('\n📊 All DAY1 format breakdown:');
   const formats = {
-    '6-digit': allDay1Members.filter(m => /^DAY1\d{6}$/.test(m.member_number)).length,
-    '7-digit': allDay1Members.filter(m => /^DAY1\d{7}$/.test(m.member_number)).length,
-    '8-digit': allDay1Members.filter(m => /^DAY1\d{8}$/.test(m.member_number)).length,
-    '9-digit': allDay1Members.filter(m => /^DAY1\d{9}$/.test(m.member_number)).length,
-    '10-digit': allDay1Members.filter(m => /^DAY1\d{10}$/.test(m.member_number)).length,
-    'with-letters': allDay1Members.filter(m => !/^DAY1\d+$/.test(m.member_number)).length,
-    'other': allDay1Members.filter(m => /^DAY1\d+$/.test(m.member_number) && !/^DAY1\d{6,10}$/.test(m.member_number)).length
+    '6-digit': allAltiraMembers.filter(m => /^DAY1\d{6}$/.test(m.member_number)).length,
+    '7-digit': allAltiraMembers.filter(m => /^DAY1\d{7}$/.test(m.member_number)).length,
+    '8-digit': allAltiraMembers.filter(m => /^DAY1\d{8}$/.test(m.member_number)).length,
+    '9-digit': allAltiraMembers.filter(m => /^DAY1\d{9}$/.test(m.member_number)).length,
+    '10-digit': allAltiraMembers.filter(m => /^DAY1\d{10}$/.test(m.member_number)).length,
+    'with-letters': allAltiraMembers.filter(m => !/^DAY1\d+$/.test(m.member_number)).length,
+    'other': allAltiraMembers.filter(m => /^DAY1\d+$/.test(m.member_number) && !/^DAY1\d{6,10}$/.test(m.member_number)).length
   };
   
   Object.entries(formats).forEach(([format, count]) => {
@@ -85,4 +85,4 @@ async function checkDay17Digit() {
   });
 }
 
-checkDay17Digit().catch(console.error);
+checkAltira7Digit().catch(console.error);

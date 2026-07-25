@@ -96,7 +96,7 @@ async function importMissing() {
       member_number: r.policy,
       id_number: `TEMP${r.policy}`,
       date_of_birth: '1980-01-01',
-      email: `${r.policy.toLowerCase()}@temp.day1health.co.za`,
+      email: `${r.policy.toLowerCase()}@temp.altira-orbit.co.za`,
       mobile: '0000000000',
       first_name: initial,
       last_name: lastName,

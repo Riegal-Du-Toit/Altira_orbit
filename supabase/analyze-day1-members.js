@@ -6,11 +6,11 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-async function analyzeDay1Members() {
+async function analyzeAltiraMembers() {
   console.log('🔍 Analyzing DAY1 member numbers...\n');
   
   // Get ALL members with member_number starting with DAY1
-  let allDay1Members = [];
+  let allAltiraMembers = [];
   let page = 0;
   const pageSize = 1000;
   let hasMore = true;
@@ -30,18 +30,18 @@ async function analyzeDay1Members() {
     if (members.length === 0) {
       hasMore = false;
     } else {
-      allDay1Members = allDay1Members.concat(members);
+      allAltiraMembers = allAltiraMembers.concat(members);
       page++;
     }
   }
   
-  console.log(`Total DAY1 members found: ${allDay1Members.length}\n`);
+  console.log(`Total DAY1 members found: ${allAltiraMembers.length}\n`);
   
   // Analyze the formats
   const formats = {};
   const numericOnly = [];
   
-  allDay1Members.forEach(m => {
+  allAltiraMembers.forEach(m => {
     const withoutPrefix = m.member_number.replace('DAY1', '');
     
     // Check if it's purely numeric
@@ -60,7 +60,7 @@ async function analyzeDay1Members() {
   
   console.log('📊 Format Analysis:');
   console.log(`   Pure numeric (DAY1######): ${numericOnly.length}`);
-  console.log(`   With letters: ${allDay1Members.length - numericOnly.length}\n`);
+  console.log(`   With letters: ${allAltiraMembers.length - numericOnly.length}\n`);
   
   if (Object.keys(formats).length > 0) {
     console.log('Letter formats found:');
@@ -85,7 +85,7 @@ async function analyzeDay1Members() {
   }
   
   // Show some examples of members with letters
-  const withLetters = allDay1Members.filter(m => !/^DAY1\d+$/.test(m.member_number));
+  const withLetters = allAltiraMembers.filter(m => !/^DAY1\d+$/.test(m.member_number));
   if (withLetters.length > 0) {
     console.log('\n⚠️  Examples of members with LETTERS in number (first 10):');
     withLetters.slice(0, 10).forEach((m, i) => {
@@ -94,4 +94,4 @@ async function analyzeDay1Members() {
   }
 }
 
-analyzeDay1Members().catch(console.error);
+analyzeAltiraMembers().catch(console.error);

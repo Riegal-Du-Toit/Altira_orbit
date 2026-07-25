@@ -1,5 +1,5 @@
 -- Hospital Claims Workspace schema
--- Keeps the Day1 hospital claims register separate from the generic claims engine
+-- Keeps the Altira hospital claims register separate from the generic claims engine
 -- while preserving links back to members, providers, claims, documents, payments, and audit.
 
 create extension if not exists pgcrypto;

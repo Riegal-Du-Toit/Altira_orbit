@@ -19,7 +19,7 @@ export function FinalCTA() {
       />
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          1 minute. 1 hour. Day1 covered.
+          1 minute. 1 hour. Altira covered.
         </h2>
         <button 
           onClick={handleSignup}

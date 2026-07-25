@@ -25,7 +25,7 @@ async function createOperationsUser() {
     const { data: existingUser } = await supabase
       .from('users')
       .select('*')
-      .eq('email', 'operations@day1main.com')
+      .eq('email', 'operations@system.com')
       .single();
 
     if (existingUser) {
@@ -42,7 +42,7 @@ async function createOperationsUser() {
     const { data: newUser, error: userError } = await supabase
       .from('users')
       .insert({
-        email: 'operations@day1main.com',
+        email: 'operations@system.com',
         password_hash: hashedPassword,
         first_name: 'Operations',
         last_name: 'Manager',
@@ -59,7 +59,7 @@ async function createOperationsUser() {
     }
 
     console.log('✅ Operations Manager user created successfully!');
-    console.log('Email: operations@day1main.com');
+    console.log('Email: operations@system.com');
     console.log('Password: operations123');
     console.log('User ID:', newUser.id);
     console.log('Roles:', newUser.roles);

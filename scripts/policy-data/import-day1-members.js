@@ -77,7 +77,7 @@ async function parseAndImport() {
           member_number: policyNumber,
           id_number: `TEMP${policyNumber}`, // Placeholder - will be updated later
           date_of_birth: '1980-01-01', // Placeholder - will be updated later
-          email: `${policyNumber.toLowerCase()}@temp.day1health.co.za`, // Placeholder
+          email: `${policyNumber.toLowerCase()}@temp.altira-orbit.co.za`, // Placeholder
           mobile: '0000000000', // Placeholder - will be updated later
           first_name: initial,
           last_name: lastName,

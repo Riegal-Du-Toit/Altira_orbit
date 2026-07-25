@@ -7,7 +7,7 @@ const supabase = createClient(
 );
 
 async function comprehensiveSecurityAudit() {
-  console.log('🔒 DAY1HEALTH LIVE DATABASE SECURITY AUDIT');
+  console.log('🔒 ALTIRAORB LIVE DATABASE SECURITY AUDIT');
   console.log('='.repeat(100));
   console.log(`Database: ${process.env.NEXT_PUBLIC_SUPABASE_URL}`);
   console.log(`Timestamp: ${new Date().toISOString()}\n`);

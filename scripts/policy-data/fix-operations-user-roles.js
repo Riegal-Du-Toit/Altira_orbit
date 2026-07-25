@@ -19,13 +19,13 @@ const supabaseServiceKey = envVars.SUPABASE_SERVICE_ROLE_KEY;
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 async function fixOperationsUserRoles() {
-  console.log('🔧 Fixing operations@day1main.com user roles...\n');
+  console.log('🔧 Fixing operations@system.com user roles...\n');
 
   // Get the user
   const { data: user, error: userError } = await supabase
     .from('users')
     .select('id, email')
-    .eq('email', 'operations@day1main.com')
+    .eq('email', 'operations@system.com')
     .single();
 
   if (userError || !user) {

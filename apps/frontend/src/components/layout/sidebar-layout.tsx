@@ -112,10 +112,10 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
     const interval = setInterval(fetchNewGopCount, 30000);
     const refreshFromUpload = () => fetchNewGopCount();
 
-    window.addEventListener('day1:gop-intake-updated', refreshFromUpload);
+    window.addEventListener('altira:gop-intake-updated', refreshFromUpload);
     return () => {
       clearInterval(interval);
-      window.removeEventListener('day1:gop-intake-updated', refreshFromUpload);
+      window.removeEventListener('altira:gop-intake-updated', refreshFromUpload);
     };
   }, [loading, user]);
 
@@ -1288,7 +1288,7 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
         </header>
 
         {/* Page content */}
-        {/* Global Day1 workspace theme shell used across admin, finance, call centre, and other sidebar pages. */}
+        {/* Global Altira workspace theme shell used across admin, finance, call centre, and other sidebar pages. */}
         <main className="workspace-main p-6">
           {children}
         </main>

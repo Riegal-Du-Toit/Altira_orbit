@@ -2,11 +2,11 @@
 
 Date: 2026-06-01
 
-This report summarizes the Day1 platform's current security position in practical project-stage terms and sets out the platform's readiness at this point in delivery.
+This report summarizes the Altira platform's current security position in practical project-stage terms and sets out the platform's readiness at this point in delivery.
 
 ## Executive summary
 
-Day1 is already meaningfully secured for its current stage of development and is well protected for controlled non-live use.
+Altira is already meaningfully secured for its current stage of development and is well protected for controlled non-live use.
 
 The platform now has:
 
@@ -22,7 +22,7 @@ The next major security upgrade depends on trusted external member identity data
 
 ## At a glance
 
-Day1 already has:
+Altira already has:
 
 - a verified containment layer on sensitive data
 - a working internal authenticated access model
@@ -30,7 +30,7 @@ Day1 already has:
 - stronger role-gated handling across operations, claims, finance, and admin workflows
 - a clear and practical path to the next security tier
 
-At this stage, Day1 is best positioned as:
+At this stage, Altira is best positioned as:
 
 - a well protected controlled platform
 - ready for internal use, structured review, and hardening-stage demonstrations
@@ -56,7 +56,7 @@ Supporting references:
 
 Practical meaning:
 
-- Day1 already has a real database containment layer in place for the current stage
+- Altira already has a real database containment layer in place for the current stage
 - the platform already has applied and verified control at the database boundary
 
 ### 2. Internal high-risk read paths have already been hardened
@@ -104,7 +104,7 @@ Supporting references:
 Practical meaning:
 
 - the internal staff-facing platform is already in a substantially better position than an early-stage prototype
-- Day1 already has the right building blocks for controlled operational use and continued security scaling
+- Altira already has the right building blocks for controlled operational use and continued security scaling
 
 ### 4. Provider access has already been improved in a meaningful way
 
@@ -122,7 +122,7 @@ Supporting references:
 Practical meaning:
 
 - the platform already enforces better ownership behavior in provider claim access
-- this gives Day1 a stronger base for later provider-specific RLS expansion
+- this gives Altira a stronger base for later provider-specific RLS expansion
 
 ### 5. Secret handling patterns have already been improved
 
@@ -135,7 +135,7 @@ Practical meaning:
 
 ## Current readiness position
 
-Day1 is not yet presenting itself as a fully mature, fully self-service production healthcare platform.
+Altira is not yet presenting itself as a fully mature, fully self-service production healthcare platform.
 
 At this stage, it is best described as:
 
@@ -143,7 +143,7 @@ At this stage, it is best described as:
 - suitable for internal workflows, testing, limited demonstration, and structured external technical review
 - already protected by real containment and meaningful route hardening
 
-Security should be judged against current delivery stage, and on that basis Day1 is in a solid position.
+Security should be judged against current delivery stage, and on that basis Altira is in a solid position.
 
 ### What is already in place for this stage
 
@@ -153,7 +153,7 @@ Security should be judged against current delivery stage, and on that basis Day1
 - destructive behaviors have been narrowed or disabled in several reviewed areas
 - the next hardening work is clearly identified rather than undefined
 
-That gives Day1 a much stronger footing than a typical early-stage platform and supports a confident readiness statement:
+That gives Altira a much stronger footing than a typical early-stage platform and supports a confident readiness statement:
 
 - we have already put real containment in place on sensitive data access
 - we have already hardened several important internal access paths
@@ -166,11 +166,11 @@ This means the platform is already fairly well buttoned up for controlled non-li
 
 The next big security upgrade depends on trusted member and provider identity linkage from the external source.
 
-That is the key step that moves Day1 from strong internal protection to full self-service database-enforced ownership isolation.
+That is the key step that moves Altira from strong internal protection to full self-service database-enforced ownership isolation.
 
 ### Why this matters
 
-To act like a fully mature secure self-service system, Day1 needs the database to know exactly which authenticated user owns which member or provider record.
+To act like a fully mature secure self-service system, Altira needs the database to know exactly which authenticated user owns which member or provider record.
 
 That will allow the platform to enforce:
 
@@ -180,9 +180,9 @@ That will allow the platform to enforce:
 
 This is primarily an identity and trusted-data issue rather than a simple route-cleanup issue.
 
-Once the external source provides the right member data and identifiers, Day1 can finish the last major step toward full self-service security maturity.
+Once the external source provides the right member data and identifiers, Altira can finish the last major step toward full self-service security maturity.
 
-## What Day1 is ready for now
+## What Altira is ready for now
 
 ### Ready for controlled use and review
 
@@ -201,7 +201,7 @@ Once the external source provides the right member data and identifiers, Day1 ca
 
 ## What gets upgraded after trusted member data is loaded
 
-Once the external member data is loaded in a trusted way, Day1 will be positioned to complete the next security tier.
+Once the external member data is loaded in a trusted way, Altira will be positioned to complete the next security tier.
 
 That tier includes:
 
@@ -235,9 +235,9 @@ With identity linkage in place, more flows can move away from privileged bypass 
 
 The strongest accurate message at this stage is:
 
-- Day1 already has meaningful containment and route hardening in place
-- Day1 is already protected well for a controlled non-live platform
-- Day1 already has a strong internal staff-side authorization base
+- Altira already has meaningful containment and route hardening in place
+- Altira is already protected well for a controlled non-live platform
+- Altira already has a strong internal staff-side authorization base
 - the next major improvement depends on trusted external identity data, which will enable final self-service security enforcement
 
 That is the right tone because it is:
@@ -249,7 +249,7 @@ That is the right tone because it is:
 
 ## Bottom line
 
-Day1 is already in a much stronger security position than an uncontained early-stage platform.
+Altira is already in a much stronger security position than an uncontained early-stage platform.
 
 Right now we have:
 

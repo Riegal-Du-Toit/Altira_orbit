@@ -1,4 +1,4 @@
--- Phase 1 emergency containment for Day1Health
+-- Phase 1 emergency containment for Altira Orbit
 -- Date: 2026-06-01
 --
 -- Goal:

@@ -6,10 +6,10 @@ require('dotenv').config({ path: 'apps/frontend/.env.local' });
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const EXTRACTED_DIR = process.env.XLSX_EXTRACTED_DIR || '/tmp/day1claimsxlsx';
+const EXTRACTED_DIR = process.env.XLSX_EXTRACTED_DIR || '/tmp/altira-claimsxlsx';
 const WORKBOOK_FILE =
   process.env.HOSPITAL_CLAIMS_WORKBOOK ||
-  '/home/megatron/Projects/day1main/day1main-design/dashboard/johan/johan claims/docsasdiscussed/Copy of Claims Register APR 2026 AS AT 2 June F.xlsx';
+  '/tmp/altira-orbit-claims-workbook.xlsx';
 const SHEET_NAME = process.env.HOSPITAL_CLAIMS_SHEET || '2026';
 
 if (!SUPABASE_URL || !SERVICE_KEY) {

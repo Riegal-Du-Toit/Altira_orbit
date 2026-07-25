@@ -493,7 +493,7 @@ export default function ClaimSubmissionPage() {
                     id="lookupValue"
                     placeholder={
                       lookupMode === 'member_number'
-                        ? 'DAY1XXXXXXX'
+                        ? 'Altira member number'
                         : lookupMode === 'patient_name'
                           ? 'John Smith'
                           : '8001015800083'
@@ -556,7 +556,7 @@ export default function ClaimSubmissionPage() {
                   </label>
                   <Input
                     id="memberNumber"
-                    placeholder="DAY1XXXXXXX"
+                    placeholder="Altira member number"
                     value={memberNumber}
                     onChange={(e) => setMemberNumber(e.target.value)}
                   />
@@ -589,7 +589,7 @@ export default function ClaimSubmissionPage() {
                   </label>
                   <Input
                     id="memberPlanName"
-                    placeholder="DAY1 Executive Plan"
+                    placeholder="Altira Executive Plan"
                     value={memberPlanName}
                     onChange={(e) => setMemberPlanName(e.target.value)}
                   />

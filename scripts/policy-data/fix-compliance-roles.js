@@ -18,7 +18,7 @@ async function fixComplianceRoles() {
   const { data: user, error: userError } = await supabase
     .from('users')
     .select('id, email')
-    .eq('email', 'compliance@day1main.com')
+    .eq('email', 'compliance@system.com')
     .single();
 
   if (userError || !user) {
@@ -84,7 +84,7 @@ async function fixComplianceRoles() {
     return;
   }
 
-  console.log('\n✅ Current roles for compliance@day1main.com:');
+  console.log('\n✅ Current roles for compliance@system.com:');
   userRoles.forEach(ur => {
     console.log(`  - ${ur.roles.name}`);
   });

@@ -25,7 +25,7 @@ const BANKS = [
   { name: 'Capitec', branch: '470010' }
 ];
 
-// Premium amounts (realistic Day1Health pricing)
+// Premium amounts (realistic Altira Orbit pricing)
 const PREMIUMS = [325, 420, 565, 640, 665, 855, 918.75, 1131, 1369, 1598, 1724, 1750, 1924, 2262];
 
 // Debit days

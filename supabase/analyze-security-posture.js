@@ -7,7 +7,7 @@ const supabase = createClient(
 );
 
 async function analyzeSecurityPosture() {
-  console.log('🔒 DAY1HEALTH SECURITY POSTURE ANALYSIS');
+  console.log('🔒 ALTIRAORB SECURITY POSTURE ANALYSIS');
   console.log('='.repeat(100));
   console.log('\nComparing against recommended healthcare-grade security layers...\n');
   

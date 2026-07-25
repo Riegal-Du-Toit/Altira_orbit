@@ -708,8 +708,8 @@ export default function HospitalClaimsPage() {
       void fetchClaims();
     };
 
-    window.addEventListener('day1:gop-intake-updated', refreshWorkspace);
-    return () => window.removeEventListener('day1:gop-intake-updated', refreshWorkspace);
+    window.addEventListener('altira:gop-intake-updated', refreshWorkspace);
+    return () => window.removeEventListener('altira:gop-intake-updated', refreshWorkspace);
   }, []);
 
   const fetchClaims = async () => {
@@ -953,7 +953,7 @@ export default function HospitalClaimsPage() {
           setSelectedRow(existingRow);
           setNewIntakes((current) => current.filter((intake) => intake.id !== selectedIntakeReview.id));
           closeIntakeReview();
-          window.dispatchEvent(new CustomEvent('day1:gop-intake-updated'));
+          window.dispatchEvent(new CustomEvent('altira:gop-intake-updated'));
           return;
         }
         throw new Error(data.error || data.details || 'Failed to insert intake into workspace');
@@ -973,7 +973,7 @@ export default function HospitalClaimsPage() {
 
       setNewIntakes((current) => current.filter((intake) => intake.id !== selectedIntakeReview.id));
       closeIntakeReview();
-      window.dispatchEvent(new CustomEvent('day1:gop-intake-updated'));
+      window.dispatchEvent(new CustomEvent('altira:gop-intake-updated'));
     } catch (error) {
       setIntakeReviewError(error instanceof Error ? error.message : 'Failed to insert intake into workspace');
     } finally {

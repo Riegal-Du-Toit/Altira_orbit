@@ -65,7 +65,7 @@ const DEFAULT_DEFINITIONS = [
   ['Illness', 'The onset of an acute, unforeseeable, and medically necessary condition requiring covered treatment.'],
   ['Inception Date', 'The date stated in the policy schedule from which waiting periods and benefits are measured.'],
   ['Insured Persons', 'The principal member and any approved spouse or dependant children listed for cover under the policy.'],
-  ['Insurer', 'African Unity Life Limited, the underwriter of the Day1 Health medical insurance products.'],
+  ['Insurer', 'African Unity Life Limited, the underwriter of the Altira Orbit medical insurance products.'],
   ['Policy Schedule', 'The policy schedule issued to the principal member recording the selected plan and premium.'],
   ['Pre-Authorisation Services', 'The authorisation process or call-centre service used to approve benefits before treatment where required.'],
   ['Pre-Existing Condition', 'A condition for which advice, diagnosis, or treatment was received before the inception date, subject to the applicable exclusion period.'],

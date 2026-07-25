@@ -8,7 +8,7 @@ const supabase = createClient(
 
 // Official broker code mapping
 const BROKER_MAPPING = {
-  'DAY1': 'Day1Health Direct',
+  'DAY1': 'Altira Orbit Direct',
   'PAR': 'Parabellum',
   'MAM': 'Mamela',
   'ACU': 'Acumen Holdings',
@@ -22,7 +22,7 @@ const BROKER_MAPPING = {
   'MBM': 'Medi-Safu Brokers Montana',
   'MKT': 'MKT Marketing',
   'MTS': 'All My T',
-  'NAV': 'Day1 Navigator',
+  'NAV': 'Altira Navigator',
   'RCO': 'Right Cover Online',
   'TFG': 'The Foschini Group',
   'THR': '360 Financial Service',

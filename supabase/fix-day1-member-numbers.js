@@ -6,12 +6,12 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-async function fixDay1MemberNumbers() {
+async function fixAltiraMemberNumbers() {
   console.log('🔧 Starting DAY1 member number standardization...\n');
   
   // Step 1: Get ALL DAY1 members
   console.log('📥 Fetching all DAY1 members...');
-  let allDay1Members = [];
+  let allAltiraMembers = [];
   let page = 0;
   const pageSize = 1000;
   let hasMore = true;
@@ -31,16 +31,16 @@ async function fixDay1MemberNumbers() {
     if (members.length === 0) {
       hasMore = false;
     } else {
-      allDay1Members = allDay1Members.concat(members);
+      allAltiraMembers = allAltiraMembers.concat(members);
       page++;
     }
   }
   
-  console.log(`✅ Fetched ${allDay1Members.length} DAY1 members\n`);
+  console.log(`✅ Fetched ${allAltiraMembers.length} DAY1 members\n`);
   
   // Step 2: Separate correct vs incorrect format
-  const correct7Digit = allDay1Members.filter(m => /^DAY1\d{7}$/.test(m.member_number));
-  const needsFixing = allDay1Members.filter(m => !/^DAY1\d{7}$/.test(m.member_number));
+  const correct7Digit = allAltiraMembers.filter(m => /^DAY1\d{7}$/.test(m.member_number));
+  const needsFixing = allAltiraMembers.filter(m => !/^DAY1\d{7}$/.test(m.member_number));
   
   console.log(`✅ Correct 7-digit format: ${correct7Digit.length} members`);
   console.log(`⚠️  Need fixing: ${needsFixing.length} members\n`);
@@ -144,4 +144,4 @@ async function fixDay1MemberNumbers() {
   console.log('\n✅ Standardization complete!');
 }
 
-fixDay1MemberNumbers().catch(console.error);
+fixAltiraMemberNumbers().catch(console.error);

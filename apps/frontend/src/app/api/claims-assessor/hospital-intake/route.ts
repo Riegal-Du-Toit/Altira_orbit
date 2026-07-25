@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     const extension = getFileExtension(file.name, file.type);
     const bytes = Buffer.from(await file.arrayBuffer());
-    tempFile = path.join(os.tmpdir(), `day1-hcr-${randomUUID()}${extension}`);
+    tempFile = path.join(os.tmpdir(), `altira-hcr-${randomUUID()}${extension}`);
     await fs.writeFile(tempFile, bytes);
 
     const fullText = await extractText(tempFile, extension);

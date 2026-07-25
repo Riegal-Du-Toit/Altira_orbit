@@ -36,7 +36,7 @@ async function seedTestMembers() {
         member_number: policyNumber,
         id_number: `TEMP${policyNumber}`,
         date_of_birth: '1980-01-01',
-        email: `${policyNumber.toLowerCase()}@temp.day1health.co.za`,
+        email: `${policyNumber.toLowerCase()}@temp.altira-orbit.co.za`,
         mobile: '0000000000',
         first_name: initial,
         last_name: lastName,

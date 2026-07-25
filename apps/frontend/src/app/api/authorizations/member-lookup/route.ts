@@ -187,7 +187,7 @@ function chooseBestProduct(products: any[], planName: string) {
 function normalizePlanName(value: string) {
   return value
     .toLowerCase()
-    .replace(/day1|health|plan/g, ' ')
+    .replace(/day1|altira|orbit|health|plan/g, ' ')
     .replace(/[^a-z0-9]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();

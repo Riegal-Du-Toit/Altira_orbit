@@ -10,7 +10,7 @@ async function findProperSequence() {
   console.log('🔍 Finding proper DAY1 sequence...\n');
   
   // Get ALL members with member_number starting with DAY1
-  let allDay1Members = [];
+  let allAltiraMembers = [];
   let page = 0;
   const pageSize = 1000;
   let hasMore = true;
@@ -30,13 +30,13 @@ async function findProperSequence() {
     if (members.length === 0) {
       hasMore = false;
     } else {
-      allDay1Members = allDay1Members.concat(members);
+      allAltiraMembers = allAltiraMembers.concat(members);
       page++;
     }
   }
   
   // Filter to only 6-digit sequences (DAY1XXXXXX format)
-  const properFormat = allDay1Members
+  const properFormat = allAltiraMembers
     .filter(m => /^DAY1\d{6}$/.test(m.member_number))
     .map(m => ({
       number: m.member_number,
@@ -64,13 +64,13 @@ async function findProperSequence() {
   }
   
   // Show members without broker (application funnel)
-  const noBroker = allDay1Members.filter(m => !m.broker_code);
+  const noBroker = allAltiraMembers.filter(m => !m.broker_code);
   console.log(`\n📊 Members without broker (application funnel): ${noBroker.length}`);
   
   // Show different length formats
   console.log('\n📏 Member number length distribution:');
   const lengths = {};
-  allDay1Members.forEach(m => {
+  allAltiraMembers.forEach(m => {
     const len = m.member_number.length;
     lengths[len] = (lengths[len] || 0) + 1;
   });

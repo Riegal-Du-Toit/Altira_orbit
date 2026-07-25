@@ -178,7 +178,7 @@ export default function ApplicationSubmittedPage() {
             <h3 className="font-medium text-gray-900 mb-3">Need help?</h3>
             <div className="text-sm text-gray-600 space-y-1">
               <p>📞 Call us: 0876 100 600</p>
-              <p>📧 Email: sales@day1.co.za</p>
+              <p>📧 Email: applications@altiragroup.co.za</p>
             </div>
           </div>
 
@@ -220,7 +220,7 @@ What happens next:
 4. Welcome Pack - You'll receive your member card, policy documents, and welcome pack via email and post.
 
 Need help?
-Call us: 0800 DAY1 HEALTH
+Call us: 0800 ALTIRA
 Email: applications@altiragroup.co.za
 Hours: Monday - Friday: 8:00 AM - 5:00 PM
 

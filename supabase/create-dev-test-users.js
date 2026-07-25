@@ -16,35 +16,35 @@ const supabase = createClient(
 
 const TEST_USERS = [
   {
-    email: 'admin@day1health.test',
+    email: 'admin@altira-orbit.test',
     password: TEST_USER_PASSWORD,
     firstName: 'Admin',
     lastName: 'User',
     roles: ['admin', 'system_admin'],
   },
   {
-    email: 'operations@day1health.test',
+    email: 'operations@altira-orbit.test',
     password: TEST_USER_PASSWORD,
     firstName: 'Operations',
     lastName: 'Manager',
     roles: ['operations_manager'],
   },
   {
-    email: 'claims@day1health.test',
+    email: 'claims@altira-orbit.test',
     password: TEST_USER_PASSWORD,
     firstName: 'Claims',
     lastName: 'Assessor',
     roles: ['claims_assessor'],
   },
   {
-    email: 'finance@day1health.test',
+    email: 'finance@altira-orbit.test',
     password: TEST_USER_PASSWORD,
     firstName: 'Finance',
     lastName: 'Manager',
     roles: ['finance_manager'],
   },
   {
-    email: 'callcentre@day1health.test',
+    email: 'callcentre@altira-orbit.test',
     password: TEST_USER_PASSWORD,
     firstName: 'Call',
     lastName: 'Centre',
@@ -54,7 +54,7 @@ const TEST_USERS = [
 
 const TEST_PROVIDERS = [
   {
-    email: 'provider1@day1health.test',
+    email: 'provider1@altira-orbit.test',
     password: PROVIDER_TEST_PASSWORD,
     firstName: 'Test',
     lastName: 'Provider',
@@ -66,7 +66,7 @@ const TEST_PROVIDERS = [
     status: 'active',
   },
   {
-    email: 'provider2@day1health.test',
+    email: 'provider2@altira-orbit.test',
     password: PROVIDER_TEST_PASSWORD,
     firstName: 'Specialist',
     lastName: 'Test',

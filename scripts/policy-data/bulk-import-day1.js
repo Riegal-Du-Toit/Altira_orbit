@@ -64,7 +64,7 @@ async function bulkImport() {
         member_number: policy,
         id_number: `TEMP${policy}`,
         date_of_birth: '1980-01-01',
-        email: `${policy.toLowerCase()}@temp.day1health.co.za`,
+        email: `${policy.toLowerCase()}@temp.altira-orbit.co.za`,
         mobile: '0000000000',
         first_name: initial,
         last_name: lastName,

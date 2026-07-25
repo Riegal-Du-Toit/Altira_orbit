@@ -17,7 +17,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   },
   global: {
     headers: {
-      'x-application-name': 'day1health',
+      'x-application-name': 'altira-orbit',
     },
     fetch: (url, options = {}) => {
       // Increase timeout for storage uploads

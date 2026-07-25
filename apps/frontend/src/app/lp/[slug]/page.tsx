@@ -83,7 +83,7 @@ export default function LandingPageView() {
   }
 
   // Render based on template
-  if (landingPage.template === 'day1health') {
+  if (landingPage.template === 'altira-orbit') {
     return (
       <main className="min-h-screen">
         <Hero />

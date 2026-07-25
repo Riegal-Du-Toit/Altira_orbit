@@ -1,4 +1,4 @@
-# Day1 Hospital Claims Workspace (Excel++ Design)
+# Altira Hospital Claims Workspace (Excel++ Design)
 
 ## Codex Build Instructions
 
@@ -22,7 +22,7 @@ Training time should be close to zero because the workflow remains familiar.
 
 ## Core Principles
 
-- Preserve the existing Day1 hospital claims register layout.
+- Preserve the existing Altira hospital claims register layout.
 - Keep the existing column order unless absolutely necessary.
 - Users should feel they are working inside Excel.
 - Add modern functionality without changing the workflow.
@@ -76,7 +76,7 @@ Import and display rules:
 - Date strings previously appearing under the workbook Beneficiary area are payment dates and must import into `payment_date`.
 - Monthly subtotal rows remain in the register and display under the month they summarize.
 - Workbook section month controls grouping when a row date appears in a later month but belongs to the current Excel section.
-- Notes such as `Acc Day1` are kept as notes and must not be parsed as Rand amounts.
+- Notes such as `Acc Altira` are kept as notes and must not be parsed as Rand amounts.
 - Columns with any real data stay visible at full width; only completely empty columns may collapse horizontally.
 
 ---
@@ -510,13 +510,13 @@ Show warnings when:
 
 This remains a proposed direct intake option if Africa Assist agrees to add an **Add GOP** button to their desktop/application.
 
-The goal is to let Africa Assist send GOP documents directly into the Day1 Hospital Claims intake queue instead of relying on manual attachment handling.
+The goal is to let Africa Assist send GOP documents directly into the Altira Hospital Claims intake queue instead of relying on manual attachment handling.
 
 Recommended flow:
 
 ```txt
 Africa Assist Add GOP button
-→ Secure Day1 GOP intake API
+→ Secure Altira GOP intake API
 → Store original GOP document
 → Scan/extract GOP fields
 → Auto lookup member/provider/policy data
@@ -692,7 +692,7 @@ The dashboard must already be designed so these modules can plug in later withou
 
 ## User Experience Goal
 
-The claims processor should feel like they are still using the familiar Day1 Excel register, but with modern intelligence.
+The claims processor should feel like they are still using the familiar Altira Excel register, but with modern intelligence.
 
 The system should eliminate repetitive typing through OCR and automatic database lookups, reduce errors, provide instant access to supporting documents, and prepare the platform for the future AI-powered Claims Washer.
 

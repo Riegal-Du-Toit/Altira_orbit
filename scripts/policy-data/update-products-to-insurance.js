@@ -1,6 +1,6 @@
 /**
  * Update all products to insurance regime
- * Day1Health is a medical insurer, not a medical scheme
+ * Altira Orbit is a medical insurer, not a medical scheme
  * Run: node supabase/update-products-to-insurance.js
  */
 
@@ -51,7 +51,7 @@ async function updateProductsToInsurance() {
 
     console.log('✅ All products updated to insurance regime!\n');
     console.log('📝 Summary:');
-    console.log('  Day1Health operates as a medical insurer (FSCA regulated)');
+    console.log('  Altira Orbit operates as a medical insurer (FSCA regulated)');
     console.log('  NOT a medical scheme (CMS regulated)');
     console.log('  All products now correctly marked as "insurance"\n');
 
