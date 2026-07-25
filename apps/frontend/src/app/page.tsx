@@ -71,7 +71,7 @@ function WovenOrbitBackground() {
     points.scale.set(0.944, 0.858, 0.858);
     points.rotation.x = -0.22;
     points.position.x = -0.36;
-    points.position.y = -0.4;
+    points.position.y = -0.334;
     scene.add(points);
 
     const handleMouseMove = (event: MouseEvent) => {
@@ -193,8 +193,8 @@ export default function Home() {
         <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,18,0.12)_35%,rgba(2,6,18,0.88)_100%)]" />
 
         <nav className="absolute top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white shadow-sm">
-          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <img src="/logo1.png" alt="Altira Group" className="h-12 w-auto" />
+          <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+            <img src="/logo1.png" alt="Altira Group" className="h-9 w-auto" />
             <div className="relative flex items-center gap-4">
               {loginOpen && (
                 <button
@@ -231,7 +231,7 @@ export default function Home() {
 
         <motion.div
           className="container relative z-20 mx-auto px-4 text-center"
-          style={{ paddingTop: '170px' }}
+          style={{ paddingTop: '146px' }}
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.2, 0.65, 0.3, 0.9] }}
@@ -252,8 +252,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <footer className="border-t border-slate-800 bg-[#020612]">
-        <div className="container mx-auto px-4 py-8 text-center">
+      <footer className="relative -mt-4 border-t border-slate-800 bg-[#020612]">
+        <div className="container mx-auto px-4 py-3 text-center">
           <p className="text-sm text-slate-400">&copy; 2026 Altira Orbit. All rights reserved.</p>
         </div>
       </footer>
