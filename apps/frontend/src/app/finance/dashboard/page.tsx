@@ -5,8 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
 import { SidebarLayout } from '@/components/layout/sidebar-layout';
 import { InlinePageLoading } from '@/components/layout/page-loading';
+import { DashboardMetricCard } from '@/components/dashboard/dashboard-metric-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { DollarSign, TrendingUp, CreditCard, FileText } from 'lucide-react';
+import { DollarSign, CreditCard, FileText } from 'lucide-react';
 
 export default function FinanceDashboardPage() {
   const router = useRouter();
@@ -45,101 +46,50 @@ export default function FinanceDashboardPage() {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(34, 211, 238, 1)",
-              "--glow-color-via": "rgba(34, 211, 238, 0.075)",
-              "--glow-color-to": "rgba(34, 211, 238, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Total Revenue</p>
-                  <p className="text-3xl font-bold mt-1">R 0</p>
-                  <p className="text-xs text-gray-500 mt-1">No revenue yet</p>
-                </div>
-                <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center">
-                  <DollarSign className="w-6 h-6 text-cyan-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Total Revenue"
+            value="R 0"
+            subtitle="No revenue yet"
+            icon={<DollarSign className="w-6 h-6 text-cyan-600" />}
+            accentColor="rgba(34, 211, 238, 1)"
+            glowFrom="rgba(34, 211, 238, 0.075)"
+            glowTo="rgba(34, 211, 238, 0.2)"
+            iconBackgroundClassName="bg-cyan-100"
+          />
 
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(16, 185, 129, 1)",
-              "--glow-color-via": "rgba(16, 185, 129, 0.075)",
-              "--glow-color-to": "rgba(16, 185, 129, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Outstanding Payments</p>
-                  <p className="text-3xl font-bold mt-1">R 0</p>
-                  <p className="text-xs text-gray-600 mt-1">0 pending</p>
-                </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <CreditCard className="w-6 h-6 text-green-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Outstanding Payments"
+            value="R 0"
+            subtitle="0 pending"
+            icon={<CreditCard className="w-6 h-6 text-green-600" />}
+            accentColor="rgba(16, 185, 129, 1)"
+            glowFrom="rgba(16, 185, 129, 0.075)"
+            glowTo="rgba(16, 185, 129, 0.2)"
+            iconBackgroundClassName="bg-green-100"
+          />
 
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(59, 130, 246, 1)",
-              "--glow-color-via": "rgba(59, 130, 246, 0.075)",
-              "--glow-color-to": "rgba(59, 130, 246, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Reconciliation Status</p>
-                  <p className="text-3xl font-bold mt-1 text-blue-600">100%</p>
-                  <p className="text-xs text-gray-600 mt-1">Up to date</p>
-                </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <FileText className="w-6 h-6 text-blue-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Reconciliation Status"
+            value="100%"
+            subtitle="Up to date"
+            icon={<FileText className="w-6 h-6 text-blue-600" />}
+            accentColor="rgba(59, 130, 246, 1)"
+            glowFrom="rgba(59, 130, 246, 0.075)"
+            glowTo="rgba(59, 130, 246, 0.2)"
+            valueClassName="text-blue-600"
+            iconBackgroundClassName="bg-blue-100"
+          />
 
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(147, 51, 234, 1)",
-              "--glow-color-via": "rgba(147, 51, 234, 0.075)",
-              "--glow-color-to": "rgba(147, 51, 234, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Journal Entries</p>
-                  <p className="text-3xl font-bold mt-1">0</p>
-                  <p className="text-xs text-gray-600 mt-1">This month</p>
-                </div>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <FileText className="w-6 h-6 text-purple-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Journal Entries"
+            value="0"
+            subtitle="This month"
+            icon={<FileText className="w-6 h-6 text-purple-600" />}
+            accentColor="rgba(147, 51, 234, 1)"
+            glowFrom="rgba(147, 51, 234, 0.075)"
+            glowTo="rgba(147, 51, 234, 0.2)"
+            iconBackgroundClassName="bg-purple-100"
+          />
         </div>
 
         {/* Quick Actions */}

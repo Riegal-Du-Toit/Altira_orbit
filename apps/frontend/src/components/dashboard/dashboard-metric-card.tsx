@@ -1,6 +1,6 @@
 'use client';
 
-import type { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, MouseEventHandler, ReactNode } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 
 interface DashboardMetricCardProps {
@@ -13,6 +13,8 @@ interface DashboardMetricCardProps {
   glowTo: string;
   valueClassName?: string;
   iconBackgroundClassName?: string;
+  className?: string;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 export function DashboardMetricCard({
@@ -25,6 +27,8 @@ export function DashboardMetricCard({
   glowTo,
   valueClassName,
   iconBackgroundClassName,
+  className,
+  onClick,
 }: DashboardMetricCardProps) {
   const style = {
     '--glow-color': accentColor,
@@ -34,11 +38,12 @@ export function DashboardMetricCard({
 
   return (
     <Card
-      className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
+      className={`relative overflow-hidden rounded-lg border bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group ${onClick ? 'cursor-pointer' : ''} ${className ?? ''}`.trim()}
       style={style}
+      onClick={onClick}
     >
       <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none" />
-      <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20" />
+      <div className="absolute left-0 bottom-0 h-[2px] w-full bg-[var(--glow-color)] rounded-b shadow-[0_-1px_8px_var(--glow-color)] group-hover:translate-y-full transition-transform duration-200 z-20" />
       <CardContent className="pt-6 relative z-30">
         <div className="flex items-center justify-between">
           <div>

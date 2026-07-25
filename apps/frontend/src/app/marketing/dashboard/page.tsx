@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
 import { SidebarLayout } from '@/components/layout/sidebar-layout';
 import { InlinePageLoading } from '@/components/layout/page-loading';
+import { DashboardMetricCard } from '@/components/dashboard/dashboard-metric-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { authFetch } from '@/lib/auth-fetch';
 import { 
@@ -85,110 +86,51 @@ export default function MarketingDashboardPage() {
 
         {/* Key Metrics - Top Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(147, 51, 234, 1)",
-              "--glow-color-via": "rgba(147, 51, 234, 0.075)",
-              "--glow-color-to": "rgba(147, 51, 234, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Total Leads</p>
-                  <p className="text-3xl font-bold mt-1">{stats.totalLeads}</p>
-                  {stats.totalLeads > 0 && (
-                    <p className="text-xs text-green-600 mt-1 flex items-center gap-1">
-                      <TrendingUp className="w-3 h-3" />
-                      Active
-                    </p>
-                  )}
-                </div>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <Users className="w-6 h-6 text-purple-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Total Leads"
+            value={stats.totalLeads}
+            subtitle={stats.totalLeads > 0 ? 'Active' : undefined}
+            icon={<Users className="w-6 h-6 text-purple-600" />}
+            accentColor="rgba(147, 51, 234, 1)"
+            glowFrom="rgba(147, 51, 234, 0.075)"
+            glowTo="rgba(147, 51, 234, 0.2)"
+            iconBackgroundClassName="bg-purple-100"
+          />
 
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(236, 72, 153, 1)",
-              "--glow-color-via": "rgba(236, 72, 153, 0.075)",
-              "--glow-color-to": "rgba(236, 72, 153, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Active Campaigns</p>
-                  <p className="text-3xl font-bold mt-1 text-purple-600">{stats.activeCampaigns}</p>
-                  <p className="text-xs text-gray-600 mt-1">Coming soon</p>
-                </div>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <Megaphone className="w-6 h-6 text-purple-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Active Campaigns"
+            value={stats.activeCampaigns}
+            subtitle="Coming soon"
+            icon={<Megaphone className="w-6 h-6 text-purple-600" />}
+            accentColor="rgba(236, 72, 153, 1)"
+            glowFrom="rgba(236, 72, 153, 0.075)"
+            glowTo="rgba(236, 72, 153, 0.2)"
+            valueClassName="text-purple-600"
+            iconBackgroundClassName="bg-purple-100"
+          />
 
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(16, 185, 129, 1)",
-              "--glow-color-via": "rgba(16, 185, 129, 0.075)",
-              "--glow-color-to": "rgba(16, 185, 129, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Conversion Rate</p>
-                  <p className="text-3xl font-bold mt-1 text-green-600">{stats.conversionRate}%</p>
-                  {stats.totalLeads > 0 && (
-                    <p className="text-xs text-gray-600 mt-1">
-                      {stats.pipeline.converted} of {stats.totalLeads}
-                    </p>
-                  )}
-                </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <Target className="w-6 h-6 text-green-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Conversion Rate"
+            value={`${stats.conversionRate}%`}
+            subtitle={stats.totalLeads > 0 ? `${stats.pipeline.converted} of ${stats.totalLeads}` : undefined}
+            icon={<Target className="w-6 h-6 text-green-600" />}
+            accentColor="rgba(16, 185, 129, 1)"
+            glowFrom="rgba(16, 185, 129, 0.075)"
+            glowTo="rgba(16, 185, 129, 0.2)"
+            valueClassName="text-green-600"
+            iconBackgroundClassName="bg-green-100"
+          />
 
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(59, 130, 246, 1)",
-              "--glow-color-via": "rgba(59, 130, 246, 0.075)",
-              "--glow-color-to": "rgba(59, 130, 246, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Referrals</p>
-                  <p className="text-3xl font-bold mt-1">{stats.referrals}</p>
-                  <p className="text-xs text-gray-600 mt-1">Coming soon</p>
-                </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <UserPlus className="w-6 h-6 text-blue-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Referrals"
+            value={stats.referrals}
+            subtitle="Coming soon"
+            icon={<UserPlus className="w-6 h-6 text-blue-600" />}
+            accentColor="rgba(59, 130, 246, 1)"
+            glowFrom="rgba(59, 130, 246, 0.075)"
+            glowTo="rgba(59, 130, 246, 0.2)"
+            iconBackgroundClassName="bg-blue-100"
+          />
         </div>
 
         {/* Lead Pipeline & Campaign Performance */}
