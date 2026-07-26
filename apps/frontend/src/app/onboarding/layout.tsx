@@ -20,10 +20,10 @@ export default function OnboardingLayout({
   const handleLogout = async () => {
     try {
       await logout()
-      router.push('/login')
+      router.push('/')
     } catch (error) {
       console.error('Logout failed:', error)
-      router.push('/login')
+      router.push('/')
     }
   }
 
@@ -181,7 +181,7 @@ export default function OnboardingLayout({
                           : 'from-background to-muted text-foreground hover:text-muted-foreground border-border'
                         }
                         after:inset-0 after:absolute after:rounded-[inherit] after:bg-gradient-to-r after:from-transparent after:from-40% after:via-[var(--glow-color-via)] after:to-[var(--glow-color-to)] after:via-70% after:shadow-[hsl(var(--foreground)/0.15)_0px_1px_0px_inset] z-20
-                        before:absolute before:w-[5px] before:transition-all before:duration-200 before:h-[60%] before:bg-[var(--glow-color)] before:right-0 before:rounded-l before:shadow-[-2px_0_10px_var(--glow-color)] z-10
+                        before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-full before:transition-transform before:duration-200 before:bg-[var(--glow-color)] before:rounded-b before:shadow-[0_-1px_8px_var(--glow-color)] z-10
                         ${sidebarCollapsed ? 'justify-center' : ''}
                       `}
                     >
@@ -222,7 +222,7 @@ export default function OnboardingLayout({
                     w-full h-10 px-3 text-sm rounded-md border flex items-center gap-3 relative transition-colors overflow-hidden bg-gradient-to-t border-r-0 duration-200
                     from-background to-muted text-red-600 hover:text-red-700 border-border
                     after:inset-0 after:absolute after:rounded-[inherit] after:bg-gradient-to-r after:from-transparent after:from-40% after:via-[var(--glow-color-via)] after:to-[var(--glow-color-to)] after:via-70% after:shadow-[hsl(var(--foreground)/0.15)_0px_1px_0px_inset] z-20
-                    before:absolute before:w-[5px] hover:before:translate-x-full before:transition-all before:duration-200 before:h-[60%] before:bg-[var(--glow-color)] before:right-0 before:rounded-l before:shadow-[-2px_0_10px_var(--glow-color)] z-10
+                    before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-full hover:before:translate-y-full before:transition-transform before:duration-200 before:bg-[var(--glow-color)] before:rounded-b before:shadow-[0_-1px_8px_var(--glow-color)] z-10
                     ${sidebarCollapsed ? 'justify-center' : ''}
                   `}
                 >

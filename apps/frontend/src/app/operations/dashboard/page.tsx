@@ -5,19 +5,17 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
 import { SidebarLayout } from '@/components/layout/sidebar-layout';
 import { InlinePageLoading } from '@/components/layout/page-loading';
+import { DashboardMetricCard } from '@/components/dashboard/dashboard-metric-card';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
   Users, 
   CreditCard, 
-  Phone, 
   FileText, 
   Building2, 
-  TrendingUp,
   AlertCircle,
   CheckCircle,
-  Clock,
-  DollarSign
+  Clock
 } from 'lucide-react';
 
 export default function OperationsDashboardPage() {
@@ -76,80 +74,43 @@ export default function OperationsDashboardPage() {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group cursor-pointer"
-            style={{
-              "--glow-color": "rgba(59, 130, 246, 1)",
-              "--glow-color-via": "rgba(59, 130, 246, 0.075)",
-              "--glow-color-to": "rgba(59, 130, 246, 0.2)",
-            } as React.CSSProperties}
+          <DashboardMetricCard
+            title="Pending Debit Orders"
+            value="0"
+            subtitle="Ready to process"
+            icon={<CreditCard className="w-6 h-6 text-blue-600" />}
+            accentColor="rgba(59, 130, 246, 1)"
+            glowFrom="rgba(59, 130, 246, 0.075)"
+            glowTo="rgba(59, 130, 246, 0.2)"
             onClick={() => router.push('/operations/debit-orders')}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Pending Debit Orders</p>
-                  <p className="text-3xl font-bold mt-1">0</p>
-                  <p className="text-xs text-gray-600 mt-1">Ready to process</p>
-                </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <CreditCard className="w-6 h-6 text-blue-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+            iconBackgroundClassName="bg-blue-100"
+          />
 
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group cursor-pointer"
-            style={{
-              "--glow-color": "rgba(16, 185, 129, 1)",
-              "--glow-color-via": "rgba(16, 185, 129, 0.075)",
-              "--glow-color-to": "rgba(16, 185, 129, 0.2)",
-            } as React.CSSProperties}
+          <DashboardMetricCard
+            title="Provider Applications"
+            value="0"
+            subtitle="Pending approval"
+            icon={<Building2 className="w-6 h-6 text-green-600" />}
+            accentColor="rgba(16, 185, 129, 1)"
+            glowFrom="rgba(16, 185, 129, 0.075)"
+            glowTo="rgba(16, 185, 129, 0.2)"
             onClick={() => router.push('/operations/providers')}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Provider Applications</p>
-                  <p className="text-3xl font-bold mt-1 text-green-600">0</p>
-                  <p className="text-xs text-gray-600 mt-1">Pending approval</p>
-                </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <Building2 className="w-6 h-6 text-green-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+            iconBackgroundClassName="bg-green-100"
+            valueClassName="text-green-600"
+          />
 
-          <div 
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group cursor-pointer"
-            style={{
-              "--glow-color": "rgba(239, 68, 68, 1)",
-              "--glow-color-via": "rgba(239, 68, 68, 0.075)",
-              "--glow-color-to": "rgba(239, 68, 68, 0.2)",
-            } as React.CSSProperties}
+          <DashboardMetricCard
+            title="Policies in Arrears"
+            value="0"
+            subtitle="Require action"
+            icon={<AlertCircle className="w-6 h-6 text-red-600" />}
+            accentColor="rgba(239, 68, 68, 1)"
+            glowFrom="rgba(239, 68, 68, 0.075)"
+            glowTo="rgba(239, 68, 68, 0.2)"
             onClick={() => router.push('/operations/arrears')}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Policies in Arrears</p>
-                  <p className="text-3xl font-bold mt-1 text-red-600">0</p>
-                  <p className="text-xs text-gray-600 mt-1">Require action</p>
-                </div>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                  <AlertCircle className="w-6 h-6 text-red-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+            iconBackgroundClassName="bg-red-100"
+            valueClassName="text-red-600"
+          />
         </div>
 
         {/* Operational Metrics */}

@@ -41,10 +41,10 @@ export function GlowingButton({
         "--glow-color-to": glowColorTo,
       } as React.CSSProperties}
       className={cn(
-        "w-min h-20 !px-8 text-base font-semibold rounded-md border flex items-center justify-center relative transition-colors overflow-hidden bg-gradient-to-t border-r-0 duration-200 whitespace-nowrap",
+        "w-min h-20 !px-8 text-base font-semibold rounded-md border flex items-center justify-center relative transition-colors overflow-hidden bg-gradient-to-t duration-200 whitespace-nowrap",
         "from-background to-muted text-foreground hover:text-muted-foreground border-border",
         "after:inset-0 after:absolute after:rounded-[inherit] after:bg-gradient-to-r after:from-transparent after:from-40% after:via-[var(--glow-color-via)] after:to-[var(--glow-color-to)] after:via-70% after:shadow-[hsl(var(--foreground)/0.15)_0px_1px_0px_inset] z-20",
-        "before:absolute before:w-[5px] hover:before:translate-x-full before:transition-all before:duration-200 before:h-[60%] before:bg-[var(--glow-color)] before:right-0 before:rounded-l before:shadow-[-2px_0_10px_var(--glow-color)] z-10",
+        "before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-full hover:before:translate-y-full before:transition-transform before:duration-200 before:bg-[var(--glow-color)] before:rounded-b before:shadow-[0_-1px_8px_var(--glow-color)] z-10",
         className
       )}
     >

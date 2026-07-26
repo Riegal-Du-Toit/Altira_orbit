@@ -37,11 +37,11 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
   const handleLogout = async () => {
     try {
       await logout();
-      router.push('/login');
+      router.push('/');
     } catch (error) {
       console.error('Logout failed:', error);
       // Force redirect even if logout fails
-      router.push('/login');
+      router.push('/');
     }
   };
 
@@ -121,6 +121,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
 
   // Get navigation items based on user role
   const getNavigationForRole = (): NavItem[] => {
+    const sortNavigation = (items: NavItem[]) => {
+      if (items.length <= 1) return items;
+      const [first, ...rest] = items;
+      return [first, ...rest.sort((a, b) => a.name.localeCompare(b.name))];
+    };
+
     // If no user, return empty navigation
     if (!user) {
       console.log('No user found, returning empty navigation');
@@ -163,7 +169,7 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
 
     // Admin navigation
     if (isAdmin) {
-      return [
+      return sortNavigation([
         {
           name: 'Admin Dashboard',
           href: '/admin/dashboard',
@@ -285,12 +291,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Operations Manager navigation
     if (isOperationsManager) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/operations/dashboard',
@@ -391,12 +397,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Broker navigation
     if (isBroker) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/broker/dashboard',
@@ -467,12 +473,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Claims navigation
     if (isClaims) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/claims/dashboard',
@@ -523,12 +529,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Finance Manager navigation
     if (isFinanceManager) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/finance/dashboard',
@@ -609,12 +615,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Marketing Manager navigation
     if (isMarketingManager) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/marketing/dashboard',
@@ -755,12 +761,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Compliance Officer navigation
     if (isComplianceOfficer) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/compliance/dashboard',
@@ -821,12 +827,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Provider navigation
     if (isProvider) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/provider/dashboard',
@@ -877,12 +883,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Call Centre Agent navigation
     if (isCallCentreAgent) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/call-centre/dashboard',
@@ -934,12 +940,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Authorizations navigation
     if (isAuthorizationUser) {
-      return [
+      return sortNavigation([
         {
           name: 'Dashboard',
           href: '/authorizations/dashboard',
@@ -984,11 +990,11 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
             </svg>
           ),
         },
-      ];
+      ]);
     }
 
     // Member navigation (default)
-    return [
+    return sortNavigation([
       {
         name: 'Dashboard',
         href: '/dashboard',
@@ -1069,7 +1075,7 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
           </svg>
         ),
       },
-    ];
+    ]);
   };
 
   const navigation = getNavigationForRole();
@@ -1173,7 +1179,7 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
                   <div className="relative">
                     <div
                       className={`
-                        w-full h-10 px-3 text-sm rounded-md border flex items-center gap-3 relative transition-colors overflow-hidden bg-gradient-to-t border-r-0 duration-200
+                        w-full h-10 px-3 text-sm rounded-md border flex items-center gap-3 relative transition-colors overflow-hidden bg-gradient-to-t duration-200
                         ${isActive 
                           ? 'from-green-50 to-green-100 text-green-900 border-green-200 font-semibold' 
                           : 'from-background to-muted text-foreground hover:text-muted-foreground border-border'
@@ -1183,10 +1189,10 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
                     >
                       <span
                         aria-hidden="true"
-                        className="absolute right-0 top-1/2 z-30 h-[60%] w-[5px] -translate-y-1/2 rounded-l"
+                        className="absolute left-0 bottom-0 z-30 h-[2px] w-full rounded-b"
                         style={{
                           backgroundColor: glowColor,
-                          boxShadow: `-2px 0 10px ${glowColor}`,
+                          boxShadow: `0 -1px 8px ${glowColor}`,
                         }}
                       />
                       <span className="relative z-30">{item.icon}</span>

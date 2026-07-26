@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
 import { SidebarLayout } from '@/components/layout/sidebar-layout';
 import { InlinePageLoading } from '@/components/layout/page-loading';
+import { DashboardMetricCard } from '@/components/dashboard/dashboard-metric-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { authFetch } from '@/lib/auth-fetch';
 import { Bell, FileText, AlertTriangle, CheckCircle, Clock } from 'lucide-react';
@@ -112,125 +113,64 @@ export default function ClaimsAssessorDashboardPage() {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
-          <div
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(16, 185, 129, 1)",
-              "--glow-color-via": "rgba(16, 185, 129, 0.075)",
-              "--glow-color-to": "rgba(16, 185, 129, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Pending Claims</p>
-                  <p className="text-3xl font-bold mt-1">{stats.pendingClaims}</p>
-                  <p className="text-xs text-gray-600 mt-1">{stats.pendingClaims === 0 ? 'No claims yet' : 'Awaiting review'}</p>
-                </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <FileText className="w-6 h-6 text-green-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Pending Claims"
+            value={stats.pendingClaims}
+            subtitle={stats.pendingClaims === 0 ? 'No claims yet' : 'Awaiting review'}
+            icon={<FileText className="w-6 h-6 text-green-600" />}
+            accentColor="rgba(16, 185, 129, 1)"
+            glowFrom="rgba(16, 185, 129, 0.075)"
+            glowTo="rgba(16, 185, 129, 0.2)"
+            iconBackgroundClassName="bg-green-100"
+          />
 
-          <div
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(239, 68, 68, 1)",
-              "--glow-color-via": "rgba(239, 68, 68, 0.075)",
-              "--glow-color-to": "rgba(239, 68, 68, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">New GOPs</p>
-                  <p className="text-3xl font-bold mt-1 text-red-600">{stats.newGopIntakes}</p>
-                  <p className="text-xs text-gray-600 mt-1">{stats.newGopIntakes === 0 ? 'No new uploads' : 'Awaiting claims review'}</p>
-                </div>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                  <Bell className="w-6 h-6 text-red-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="New GOPs"
+            value={stats.newGopIntakes}
+            subtitle={stats.newGopIntakes === 0 ? 'No new uploads' : 'Awaiting claims review'}
+            icon={<Bell className="w-6 h-6 text-red-600" />}
+            accentColor="rgba(239, 68, 68, 1)"
+            glowFrom="rgba(239, 68, 68, 0.075)"
+            glowTo="rgba(239, 68, 68, 0.2)"
+            valueClassName="text-red-600"
+            iconBackgroundClassName="bg-red-100"
+          />
 
-          <div
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(234, 179, 8, 1)",
-              "--glow-color-via": "rgba(234, 179, 8, 0.075)",
-              "--glow-color-to": "rgba(234, 179, 8, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Pre-Auth Requests</p>
-                  <p className="text-3xl font-bold mt-1 text-yellow-600">{stats.preauthRequests}</p>
-                  <p className="text-xs text-gray-600 mt-1">{stats.preauthRequests === 0 ? 'No requests' : 'Pending authorization'}</p>
-                </div>
-                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-yellow-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Pre-Auth Requests"
+            value={stats.preauthRequests}
+            subtitle={stats.preauthRequests === 0 ? 'No requests' : 'Pending authorization'}
+            icon={<Clock className="w-6 h-6 text-yellow-600" />}
+            accentColor="rgba(234, 179, 8, 1)"
+            glowFrom="rgba(234, 179, 8, 0.075)"
+            glowTo="rgba(234, 179, 8, 0.2)"
+            valueClassName="text-yellow-600"
+            iconBackgroundClassName="bg-yellow-100"
+          />
 
-          <div
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(239, 68, 68, 1)",
-              "--glow-color-via": "rgba(239, 68, 68, 0.075)",
-              "--glow-color-to": "rgba(239, 68, 68, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Fraud Cases</p>
-                  <p className="text-3xl font-bold mt-1 text-red-600">{stats.fraudCases}</p>
-                  <p className="text-xs text-gray-600 mt-1">{stats.fraudCases === 0 ? 'No cases' : 'Requires investigation'}</p>
-                </div>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                  <AlertTriangle className="w-6 h-6 text-red-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Fraud Cases"
+            value={stats.fraudCases}
+            subtitle={stats.fraudCases === 0 ? 'No cases' : 'Requires investigation'}
+            icon={<AlertTriangle className="w-6 h-6 text-red-600" />}
+            accentColor="rgba(239, 68, 68, 1)"
+            glowFrom="rgba(239, 68, 68, 0.075)"
+            glowTo="rgba(239, 68, 68, 0.2)"
+            valueClassName="text-red-600"
+            iconBackgroundClassName="bg-red-100"
+          />
 
-          <div
-            className="relative overflow-hidden rounded-lg border border-r-0 bg-gradient-to-t from-background to-muted transition-all duration-200 hover:shadow-lg group"
-            style={{
-              "--glow-color": "rgba(34, 197, 94, 1)",
-              "--glow-color-via": "rgba(34, 197, 94, 0.075)",
-              "--glow-color-to": "rgba(34, 197, 94, 0.2)",
-            } as React.CSSProperties}
-          >
-            <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none"></div>
-            <div className="absolute w-[5px] h-[60%] bg-[var(--glow-color)] right-0 top-1/2 -translate-y-1/2 rounded-l shadow-[-2px_0_10px_var(--glow-color)] group-hover:translate-x-full transition-all duration-200 z-20"></div>
-            <CardContent className="pt-6 relative z-30">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Approved Today</p>
-                  <p className="text-3xl font-bold mt-1 text-green-600">{stats.approvedToday}</p>
-                  <p className="text-xs text-gray-600 mt-1">R {Number(stats.approvedTodayAmount || 0).toLocaleString()} total</p>
-                </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
-                </div>
-              </div>
-            </CardContent>
-          </div>
+          <DashboardMetricCard
+            title="Approved Today"
+            value={stats.approvedToday}
+            subtitle={`R ${Number(stats.approvedTodayAmount || 0).toLocaleString()} total`}
+            icon={<CheckCircle className="w-6 h-6 text-green-600" />}
+            accentColor="rgba(34, 197, 94, 1)"
+            glowFrom="rgba(34, 197, 94, 0.075)"
+            glowTo="rgba(34, 197, 94, 0.2)"
+            valueClassName="text-green-600"
+            iconBackgroundClassName="bg-green-100"
+          />
         </div>
 
         {/* Quick Actions */}

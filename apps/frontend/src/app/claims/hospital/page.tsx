@@ -1358,7 +1358,7 @@ export default function HospitalClaimsPage() {
                 aria-label="Expand claims summary"
                 title="Expand claims summary"
                 onClick={() => setSummaryCollapsed(false)}
-                className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-md border border-r-0 border-green-200 bg-gradient-to-t from-green-50 to-green-100 text-green-900 shadow-sm transition-colors before:absolute before:right-0 before:top-1/2 before:z-30 before:h-[60%] before:w-[5px] before:-translate-y-1/2 before:rounded-l before:bg-green-500 before:shadow-[-2px_0_10px_rgba(34,197,94,0.9)] after:absolute after:inset-0 after:rounded-[inherit] after:bg-gradient-to-r after:from-transparent after:from-40% after:via-green-100 after:via-70% after:to-green-200 after:shadow-[hsl(var(--foreground)/0.15)_0px_1px_0px_inset] hover:border-green-300 hover:text-green-950"
+                className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-md border border-r-0 border-green-200 bg-gradient-to-t from-green-50 to-green-100 text-green-900 shadow-sm transition-colors before:absolute before:left-0 before:bottom-0 before:z-30 before:h-[2px] before:w-full before:rounded-b before:bg-green-500 before:shadow-[0_-1px_8px_rgba(34,197,94,0.9)] after:absolute after:inset-0 after:rounded-[inherit] after:bg-gradient-to-r after:from-transparent after:from-40% after:via-green-100 after:via-70% after:to-green-200 after:shadow-[hsl(var(--foreground)/0.15)_0px_1px_0px_inset] hover:border-green-300 hover:text-green-950"
               >
                 <PanelRightOpen className="relative z-30 h-5 w-5" />
               </button>

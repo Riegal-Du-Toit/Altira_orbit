@@ -56,7 +56,7 @@ export default function MemberLayout({
   const handleLogout = () => {
     localStorage.removeItem('member_session');
     localStorage.removeItem('member_data');
-    router.push('/login');
+    router.push('/');
   };
 
   const navigation = [

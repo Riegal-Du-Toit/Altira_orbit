@@ -197,3 +197,28 @@
 .animate-slide-in-right {
   animation: slide-in-right 0.5s ease-out;
 }
+
+@keyframes login-thinking-sweep {
+  0% {
+    background-position: 120% 50%;
+  }
+  100% {
+    background-position: -20% 50%;
+  }
+}
+
+.login-thinking-text {
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    #081b66 0%,
+    #081b66 43%,
+    #2dd4bf 49%,
+    #081b66 55%,
+    #081b66 100%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: login-thinking-sweep 1.78s ease-in-out infinite;
+}
