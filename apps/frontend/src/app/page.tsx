@@ -193,8 +193,17 @@ export default function Home() {
         <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,18,0.12)_35%,rgba(2,6,18,0.88)_100%)]" />
 
         <nav className="absolute top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white shadow-sm">
-          <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+          <div className="container relative mx-auto flex items-center justify-between px-4 py-2">
             <img src="/logo1.png" alt="Altira Group" className="h-9 w-auto" />
+            <div
+              className="pointer-events-none absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
+              aria-label="Altira Group"
+            >
+              <span className="bg-gradient-to-r from-[#081b66] via-[#4938a8] to-[#7659e8] bg-clip-text text-[0.78rem] font-semibold uppercase tracking-[0.42em] text-transparent md:text-sm">
+                Altira Group
+              </span>
+              <span className="mx-auto mt-1 block h-px w-10 bg-gradient-to-r from-transparent via-[#65fff2] to-transparent" />
+            </div>
             <div className="relative flex items-center gap-4">
               {loginOpen && (
                 <button
