@@ -216,6 +216,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       persistAuthSession(data.session);
+      await supabase.auth.setSession({
+        access_token: data.session.access_token,
+        refresh_token: data.session.refresh_token,
+      });
       await loadUser();
       const authenticatedUser = data.user;
 

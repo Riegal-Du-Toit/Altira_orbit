@@ -2,17 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { createClient } from '@supabase/supabase-js';
 import { useAuth } from '@/contexts/auth-context';
+import { authFetch } from '@/lib/auth-fetch';
 import { SidebarLayout } from '@/components/layout/sidebar-layout';
 import { PageLoading } from '@/components/layout/page-loading';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 interface Provider {
   id: string;
@@ -64,15 +59,14 @@ export default function OperationsProviderDetailPage() {
       setIsLoading(true);
       setError('');
 
-      const { data, error } = await supabase
-        .from('providers')
-        .select('*')
-        .eq('id', params.id as string)
-        .single();
+      const response = await authFetch(`/api/admin/providers/${params.id as string}`);
+      const data = await response.json();
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to load provider');
+      }
 
-      setProvider(data);
+      setProvider(data.provider || null);
     } catch (err: any) {
       console.error('Error fetching provider:', err);
       setError(err.message || 'Failed to load provider');

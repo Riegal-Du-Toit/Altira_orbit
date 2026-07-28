@@ -2,18 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@supabase/supabase-js';
 import { useAuth } from '@/contexts/auth-context';
+import { authFetch } from '@/lib/auth-fetch';
 import { SidebarLayout } from '@/components/layout/sidebar-layout';
 import { PageLoading } from '@/components/layout/page-loading';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 interface Provider {
   id: string;
@@ -54,7 +49,6 @@ export default function OperationsProvidersPage() {
   useEffect(() => {
     if (!loading && user) {
       fetchProviders();
-      fetchStats();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, user]);
@@ -65,59 +59,46 @@ export default function OperationsProvidersPage() {
     }
   }, [loading, user, router]);
 
-  async function fetchStats() {
-    const [total, active, pending, inactive] = await Promise.all([
-      supabase.from('providers').select('*', { count: 'exact', head: true }),
-      supabase.from('providers').select('*', { count: 'exact', head: true }).eq('status', 'active'),
-      supabase.from('providers').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
-      supabase.from('providers').select('*', { count: 'exact', head: true }).eq('status', 'inactive'),
-    ]);
-
-    setStats({
-      total: total.count || 0,
-      active: active.count || 0,
-      pending: pending.count || 0,
-      inactive: inactive.count || 0,
-    });
-  }
-
-  async function fetchProviders(options?: { search?: string; status?: string }) {
+  async function fetchProviders(options?: { search?: string; status?: string; statsOnly?: boolean }) {
     try {
       setIsLoading(true);
       setError('');
 
       const search = options?.search ?? searchTerm;
       const status = options?.status ?? statusFilter;
-
-      let query = supabase
-        .from('providers')
-        .select('*', { count: 'exact' })
-        .order('name', { ascending: true })
-        .range(0, pageSize - 1);
+      const params = new URLSearchParams({
+        limit: String(pageSize),
+        offset: '0',
+      });
 
       if (search.trim()) {
-        query = query.or(
-          `name.ilike.%${search.trim()}%,provider_number.ilike.%${search.trim()}%,practice_name.ilike.%${search.trim()}%`
-        );
+        params.set('search', search.trim());
       }
 
       if (status) {
-        query = query.eq('status', status);
+        params.set('status', status);
       }
 
-      const { data, error, count } = await query;
+      const response = await authFetch(`/api/admin/providers?${params.toString()}`);
+      const data = await response.json();
 
-      if (error) {
-        throw error;
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to load providers');
       }
 
-      setProviders(data || []);
-      setTotalCount(count || data?.length || 0);
+      setStats(data.stats || { total: 0, active: 0, pending: 0, inactive: 0 });
+
+      if (!options?.statsOnly) {
+        setProviders(Array.isArray(data.providers) ? data.providers : []);
+        setTotalCount(data.total || 0);
+      }
     } catch (err: any) {
       console.error('Error fetching providers:', err);
       setError(err.message || 'Failed to load providers');
-      setProviders([]);
-      setTotalCount(0);
+      if (!options?.statsOnly) {
+        setProviders([]);
+        setTotalCount(0);
+      }
     } finally {
       setIsLoading(false);
     }
