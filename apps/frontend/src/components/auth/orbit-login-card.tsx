@@ -31,6 +31,14 @@ export function OrbitLoginCard({ className = '', onClose }: OrbitLoginCardProps)
       await new Promise((resolve) => setTimeout(resolve, 500));
       window.location.href = '/dashboard';
     } catch (err: any) {
+      const looksLikeMemberPin = /^\d{4,6}$/.test(credential.trim());
+
+      if (!looksLikeMemberPin) {
+        console.error('Login error:', err);
+        setError(err.message || 'Login failed. Please check your details.');
+        return;
+      }
+
       try {
         const response = await fetch('/api/member/login', {
           method: 'POST',
