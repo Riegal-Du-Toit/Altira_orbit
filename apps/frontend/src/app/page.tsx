@@ -194,7 +194,7 @@ export default function Home() {
 
         <nav className="absolute top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white shadow-sm">
           <div className="container relative mx-auto flex items-center justify-between px-4 py-2">
-            <img src="/logo1.png" alt="Altira Group" className="h-9 w-auto" />
+            <img src="/favicon.jpeg" alt="Altira emblem" className="h-9 w-auto" />
             <div
               className="pointer-events-none absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
               aria-label="Altira Group"
