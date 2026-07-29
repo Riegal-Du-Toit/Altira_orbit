@@ -63,6 +63,9 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith('/api/admin/audit') ||
     pathname.startsWith('/api/admin/rules') ||
     pathname.startsWith('/api/admin/roles') ||
+    pathname.startsWith('/api/marketing/dashboard') ||
+    pathname.startsWith('/api/marketing/landing-pages') ||
+    pathname.startsWith('/api/marketing/leads') ||
     pathname.startsWith('/api/claims-assessor') ||
     pathname.startsWith('/api/data-import');
   if (routeHandlesOwnAuth) {
@@ -159,4 +162,3 @@ export const config = {
     '/api/marketing/:path*',
   ]
 };
-

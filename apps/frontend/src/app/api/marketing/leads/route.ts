@@ -1,11 +1,14 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { requireAnyRole } from '@/lib/auth-server'
 
 export const dynamic = 'force-dynamic'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const supabase = createServerSupabaseClient()
   try {
+    await requireAnyRole(request, ['marketing_manager', 'admin', 'system_admin'])
+
     console.log('=== FETCHING LEADS FROM CONTACTS TABLE ===');
     
     // Fetch all contacts (leads, applicants, members)

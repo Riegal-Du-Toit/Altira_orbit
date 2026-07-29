@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { requireAnyRole } from '@/lib/auth-server'
 
 export const dynamic = 'force-dynamic'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    await requireAnyRole(request, ['marketing_manager', 'admin', 'system_admin'])
+
     const supabase = createServerSupabaseClient()
     
     const { data: pages, error } = await supabase
@@ -34,6 +37,8 @@ function slugify(value: string) {
 
 export async function POST(request: NextRequest) {
   try {
+    await requireAnyRole(request, ['marketing_manager', 'admin', 'system_admin'])
+
     const supabase = createServerSupabaseClient()
     const body = await request.json()
 
