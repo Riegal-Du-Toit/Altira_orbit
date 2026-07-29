@@ -3,6 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import { requireAnyRole } from '@/lib/auth-server';
 import * as XLSX from 'xlsx';
 
+export const dynamic = 'force-dynamic';
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!,

@@ -4,6 +4,8 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
@@ -11,7 +13,7 @@ export async function GET() {
     const { data: products, error } = await supabase
       .from('products')
       .select('*')
-      .eq('is_active', true)
+      .eq('status', 'published')
       .order('monthly_premium', { ascending: true });
 
     if (error) {

@@ -3,6 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import { generateBatchNumber, groupClaimsByPayee, calculatePaymentTotal, validateBankingDetails } from '@/lib/payment-processing';
 import { requireAnyRole } from '@/lib/auth-server';
 
+export const dynamic = 'force-dynamic';
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 

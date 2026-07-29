@@ -12,7 +12,7 @@
 
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { ApplicationData, Dependent } from '@/types/application'
 import { Calendar } from "@/components/ui/calendar"
 import {
@@ -27,6 +27,18 @@ import { Button } from "@/components/ui/button"
 import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { DropdownNavProps, DropdownProps } from "react-day-picker"
+
+const isValidDate = (value: Date | undefined): value is Date =>
+  value instanceof Date && !Number.isNaN(value.getTime())
+
+const safeFormatDate = (value: Date | undefined, pattern: string, fallback: ReactNode) =>
+  isValidDate(value) ? format(value, pattern) : fallback
+
+const parseValidDate = (value: string | undefined) => {
+  if (!value) return undefined
+  const parsed = new Date(value)
+  return isValidDate(parsed) ? parsed : undefined
+}
 
 interface Props {
   data: ApplicationData
@@ -87,7 +99,7 @@ export default function Step5Dependents({ data, updateData, nextStep, prevStep }
 
   const handleEdit = (index: number) => {
     setFormData(dependents[index])
-    setDate(dependents[index].dateOfBirth ? new Date(dependents[index].dateOfBirth) : undefined)
+    setDate(parseValidDate(dependents[index].dateOfBirth))
     setEditIndex(index)
     setShowForm(true)
   }
@@ -204,7 +216,7 @@ export default function Step5Dependents({ data, updateData, nextStep, prevStep }
                     className={`w-full justify-start text-left font-normal h-8 px-2 text-sm ${!date && "text-muted-foreground"}`}
                   >
                     <CalendarIcon className="mr-2 h-3 w-3" />
-                    {date ? format(date, "PPP") : <span>Select date of birth</span>}
+                    {safeFormatDate(date, "PPP", <span>Select date of birth</span>)}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">

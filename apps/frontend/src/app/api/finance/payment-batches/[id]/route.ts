@@ -3,6 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import { generateEFTFile, generatePaymentReference, validatePaymentBatch } from '@/lib/payment-processing';
 import { createAuthenticatedSupabaseClient, requireAnyRole } from '@/lib/auth-server';
 
+export const dynamic = 'force-dynamic';
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 

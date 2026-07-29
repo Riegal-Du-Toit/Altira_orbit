@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAuthenticatedSupabaseClient, requireAnyRole } from '@/lib/auth-server';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     await requireAnyRole(request, ['claims', 'admin', 'system_admin']);

@@ -15,7 +15,7 @@
 
 'use client'
 
-import { useState, useEffect, memo, useCallback, useRef } from 'react'
+import { useState, useEffect, memo, useCallback, useRef, type ReactNode } from 'react'
 import { ApplicationData } from '@/types/application'
 import { Calendar } from "@/components/ui/calendar"
 import {
@@ -30,6 +30,18 @@ import { Button } from "@/components/ui/button"
 import { CalendarIcon, Clock } from "lucide-react"
 import { format } from "date-fns"
 import { DropdownNavProps, DropdownProps } from "react-day-picker"
+
+const isValidDate = (value: Date | undefined): value is Date =>
+  value instanceof Date && !Number.isNaN(value.getTime())
+
+const safeFormatDate = (value: Date | undefined, pattern: string, fallback: ReactNode) =>
+  isValidDate(value) ? format(value, pattern) : fallback
+
+const parseValidDate = (value: string | undefined) => {
+  if (!value) return undefined
+  const parsed = new Date(value)
+  return isValidDate(parsed) ? parsed : undefined
+}
 
 // Separate Timer Component to prevent re-renders affecting the form
 const CountdownTimer = memo(({ onTimeUpdate }: { onTimeUpdate: (time: number) => void }) => {
@@ -114,7 +126,7 @@ export default function Step1Personal({ data, updateData, nextStep }: Props) {
   const [genderLocked, setGenderLocked] = useState(false)
 
   const [date, setDate] = useState<Date | undefined>(
-    formData.dateOfBirth ? new Date(formData.dateOfBirth) : undefined
+    parseValidDate(formData.dateOfBirth)
   )
 
   // State to control calendar popover
@@ -161,7 +173,7 @@ export default function Step1Personal({ data, updateData, nextStep }: Props) {
     const currentYearLastTwo = currentYear % 100
     const fullYear = parseInt(year) > currentYearLastTwo ? `19${year}` : `20${year}`
     
-    const birthDate = new Date(`${fullYear}-${month}-${day}`)
+    const birthDate = parseValidDate(`${fullYear}-${month}-${day}`)
     
     // Extract gender (digits 7-10: 0000-4999 = Female, 5000-9999 = Male)
     const genderDigits = parseInt(idNumber.substring(6, 10))
@@ -219,7 +231,7 @@ export default function Step1Personal({ data, updateData, nextStep }: Props) {
           }))
           
           if (extracted.dateOfBirth) {
-            setDate(new Date(extracted.dateOfBirth))
+            setDate(parseValidDate(extracted.dateOfBirth))
           }
           
           // Extract gender from ID if available
@@ -469,7 +481,7 @@ export default function Step1Personal({ data, updateData, nextStep }: Props) {
                   className={`w-full justify-start text-left font-normal h-8 px-2 text-sm ${!date && "text-muted-foreground"}`}
                 >
                   <CalendarIcon className="mr-2 h-3 w-3" />
-                  {date ? format(date, "PPP") : <span>Pick a date</span>}
+                  {safeFormatDate(date, "PPP", <span>Pick a date</span>)}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start" side="bottom" sideOffset={5} avoidCollisions={false}>

@@ -7,6 +7,8 @@ import path from 'path';
 import { promisify } from 'util';
 import { createServiceRoleSupabaseClient, requireAnyRole } from '@/lib/auth-server';
 
+export const dynamic = 'force-dynamic';
+
 const execFileAsync = promisify(execFile);
 
 export const runtime = 'nodejs';

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+export const dynamic = 'force-dynamic';
+
 // Waiting periods by benefit type (in days)
 const WAITING_PERIODS = {
   general: 90,        // 3 months - GP, dental, optical
