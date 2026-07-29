@@ -46,6 +46,8 @@ interface Application {
   phone_consent?: boolean;
 }
 
+const allowedRoles = ['call_centre_agent', 'operations_manager', 'admin', 'system_admin'];
+
 export default function CallCentreApplicationDetailPage() {
   const router = useRouter();
   const params = useParams();
@@ -76,7 +78,7 @@ export default function CallCentreApplicationDetailPage() {
       return;
     }
 
-    if (user && !user.roles.includes('call_centre_agent')) {
+    if (user && !allowedRoles.some((role) => user.roles.includes(role))) {
       router.push('/dashboard');
       return;
     }

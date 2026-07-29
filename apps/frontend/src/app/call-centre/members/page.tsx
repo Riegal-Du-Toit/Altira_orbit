@@ -24,6 +24,8 @@ interface Member {
   policyNumber: string;
 }
 
+const allowedRoles = ['call_centre_agent', 'operations_manager', 'admin', 'system_admin'];
+
 export default function CallCentreMembersPage() {
   const router = useRouter();
   const { user, loading, isAuthenticated } = useAuth();
@@ -31,6 +33,7 @@ export default function CallCentreMembersPage() {
   const [members, setMembers] = useState<Member[]>([]);
   const [searching, setSearching] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
@@ -38,7 +41,7 @@ export default function CallCentreMembersPage() {
       return;
     }
 
-    if (user && !user.roles.includes('call_centre_agent')) {
+    if (user && !allowedRoles.some((role) => user.roles.includes(role))) {
       router.push('/dashboard');
       return;
     }
@@ -56,12 +59,14 @@ export default function CallCentreMembersPage() {
     if (!searchTerm.trim()) {
       setMembers([]);
       setHasSearched(true);
+      setErrorMessage('');
       return;
     }
 
     try {
       setSearching(true);
       setHasSearched(true);
+      setErrorMessage('');
       const response = await authFetch(`/api/call-centre/members?search=${encodeURIComponent(searchTerm.trim())}`);
       const data = await response.json();
 
@@ -73,6 +78,7 @@ export default function CallCentreMembersPage() {
     } catch (error) {
       console.error('Error searching members:', error);
       setMembers([]);
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to search members');
     } finally {
       setSearching(false);
     }
@@ -113,13 +119,19 @@ export default function CallCentreMembersPage() {
                 </Button>
               </div>
 
+              {errorMessage && (
+                <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  {errorMessage}
+                </div>
+              )}
+
               {!hasSearched && (
                 <div className="text-center py-12 text-gray-500">
                   <p>Enter search criteria to find members</p>
                 </div>
               )}
 
-              {hasSearched && members.length === 0 && !searching && (
+              {hasSearched && members.length === 0 && !searching && !errorMessage && (
                 <div className="text-center py-12 text-gray-500">
                   <p>No members found</p>
                 </div>

@@ -8,6 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { authFetch } from '@/lib/auth-fetch';
 
+const allowedRoles = ['call_centre_agent', 'operations_manager', 'admin', 'system_admin'];
+
 export default function CallCentreTicketsPage() {
   const router = useRouter();
   const { user, loading, isAuthenticated } = useAuth();
@@ -21,7 +23,7 @@ export default function CallCentreTicketsPage() {
       return;
     }
 
-    if (user && !user.roles.includes('call_centre_agent')) {
+    if (user && !allowedRoles.some((role) => user.roles.includes(role))) {
       router.push('/dashboard');
       return;
     }

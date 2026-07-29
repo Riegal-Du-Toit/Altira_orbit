@@ -63,6 +63,8 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith('/api/admin/audit') ||
     pathname.startsWith('/api/admin/rules') ||
     pathname.startsWith('/api/admin/roles') ||
+    pathname.startsWith('/api/call-centre/applications') ||
+    pathname.startsWith('/api/call-centre/members') ||
     pathname.startsWith('/api/marketing/dashboard') ||
     pathname.startsWith('/api/marketing/landing-pages') ||
     pathname.startsWith('/api/marketing/leads') ||

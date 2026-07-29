@@ -7,6 +7,8 @@ import { SidebarLayout } from '@/components/layout/sidebar-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
+const allowedRoles = ['call_centre_agent', 'operations_manager', 'admin', 'system_admin'];
+
 const knowledgeSections = [
   {
     title: 'Member Verification Checklist',
@@ -56,7 +58,7 @@ export default function CallCentreKnowledgePage() {
       return;
     }
 
-    if (user && !user.roles.includes('call_centre_agent')) {
+    if (user && !allowedRoles.some((role) => user.roles.includes(role))) {
       router.push('/dashboard');
       return;
     }
