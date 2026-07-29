@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+import { isBrowserSupabaseMixedContentRisk, supabase } from '@/lib/supabase';
 
 interface User {
   id: string;
@@ -111,7 +111,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       let accessToken = getStoredAccessToken();
 
-      if (!accessToken) {
+      if (!accessToken && !isBrowserSupabaseMixedContentRisk()) {
         const {
           data: { session },
           error: sessionError,
@@ -216,10 +216,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       persistAuthSession(data.session);
-      await supabase.auth.setSession({
-        access_token: data.session.access_token,
-        refresh_token: data.session.refresh_token,
-      });
+
       await loadUser();
       const authenticatedUser = data.user;
 
@@ -260,10 +257,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       clearStoredAuthSession();
       setUser(null);
 
-      try {
+      if (!isBrowserSupabaseMixedContentRisk()) {
         await supabase.auth.signOut();
-      } catch (error) {
-        console.warn('Supabase browser sign-out skipped:', error);
       }
 
       if (typeof window !== 'undefined') {
@@ -284,6 +279,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     lastName: string;
   }) => {
     try {
+      if (isBrowserSupabaseMixedContentRisk()) {
+        throw new Error('Registration is unavailable from this HTTPS deployment until the Supabase URL is served over HTTPS.');
+      }
+
       const { error: authError } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,

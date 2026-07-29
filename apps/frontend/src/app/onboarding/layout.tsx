@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/auth-context'
-import { supabase } from '@/lib/supabase'
+import { authFetch } from '@/lib/auth-fetch'
 
 export default function OnboardingLayout({
   children,
@@ -34,27 +34,25 @@ export default function OnboardingLayout({
     }
 
     const fetchNewApplicationsCount = async () => {
-      const { count } = await supabase
-        .from('applications')
-        .select('*', { count: 'exact', head: true })
-        .eq('status', 'submitted')
+      try {
+        const response = await authFetch('/api/call-centre/applications')
+        if (!response.ok) {
+          throw new Error(`Failed to load applications count: ${response.status}`)
+        }
 
-      setNewApplicationsCount(count || 0)
+        const data = await response.json()
+        setNewApplicationsCount(data?.stats?.submitted || 0)
+      } catch (error) {
+        console.error('Failed to fetch new applications count:', error)
+        setNewApplicationsCount(0)
+      }
     }
 
     fetchNewApplicationsCount()
     const interval = setInterval(fetchNewApplicationsCount, 30000)
 
-    const channel = supabase
-      .channel('applications-changes')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'applications' }, () => {
-        fetchNewApplicationsCount()
-      })
-      .subscribe()
-
     return () => {
       clearInterval(interval)
-      supabase.removeChannel(channel)
     }
   }, [user, router])
 

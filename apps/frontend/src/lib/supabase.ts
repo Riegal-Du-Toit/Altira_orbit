@@ -29,6 +29,11 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   },
 });
 
+export function isBrowserSupabaseMixedContentRisk() {
+  if (typeof window === 'undefined') return false;
+  return window.location.protocol === 'https:' && supabaseUrl.startsWith('http://');
+}
+
 // Helper function to handle Supabase errors
 export function handleSupabaseError(error: any) {
   console.error('Supabase error:', error);

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
+import { authFetch } from '@/lib/auth-fetch'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { User, MapPin, FileText, CreditCard, Users, Phone, Mail, Calendar, X, Heart } from 'lucide-react'
@@ -56,29 +56,19 @@ export default function OnboardingApplicationsPage() {
 
   useEffect(() => {
     fetchApplications()
-
-    // Subscribe to real-time changes
-    const channel = supabase
-      .channel('applications-changes')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'applications' }, () => {
-        fetchApplications()
-      })
-      .subscribe()
-
-    return () => {
-      supabase.removeChannel(channel)
-    }
+    const interval = setInterval(fetchApplications, 30000)
+    return () => clearInterval(interval)
   }, [])
 
   const fetchApplications = async () => {
     try {
-      const { data, error } = await supabase
-        .from('applications')
-        .select('*')
-        .order('submitted_at', { ascending: false })
+      const response = await authFetch('/api/call-centre/applications')
+      if (!response.ok) {
+        throw new Error(`Failed to fetch applications: ${response.status}`)
+      }
 
-      if (error) throw error
-      setApplications(data || [])
+      const data = await response.json()
+      setApplications(data?.applications || [])
     } catch (error) {
       console.error('Error fetching applications:', error)
     } finally {
