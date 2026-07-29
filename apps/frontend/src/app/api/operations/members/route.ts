@@ -16,6 +16,18 @@ const supabaseAdmin = createClient(
   }
 )
 
+function normalizePaymentMethod(value: string | null | undefined) {
+  if (!value) return null
+  const normalized = value.trim().toLowerCase()
+  if (normalized === 'debit_order' || normalized === 'individual_debit_order' || normalized === 'group_debit_order') {
+    return 'debit_order'
+  }
+  if (normalized === 'eft' || normalized === 'individual_eft') {
+    return 'eft'
+  }
+  return normalized
+}
+
 export async function GET(request: NextRequest) {
   try {
     await requireAnyRole(request, ['operations_manager', 'system_admin', 'admin', 'finance_manager'])
@@ -46,12 +58,21 @@ export async function GET(request: NextRequest) {
         .not('plan_name', 'is', null)
 
       const uniquePlans = [...new Set((plans || []).map((p) => p.plan_name))]
+      const { data: paymentRows } = await supabase
+        .from('members')
+        .select('collection_method, payment_method')
+      const paymentMethods = [...new Set(
+        (paymentRows || [])
+          .flatMap((row: any) => [row.collection_method, row.payment_method])
+          .map((value: string | null | undefined) => normalizePaymentMethod(value))
+          .filter(Boolean)
+      )].sort() as string[]
 
       return NextResponse.json({
         filters: {
           brokers: brokerRecords,
           plans: uniquePlans.sort(),
-          paymentMethods: ['A - MAG TAPE', 'B - BANK CASH'],
+          paymentMethods,
           statuses: ['active', 'pending', 'suspended', 'in_waiting'],
         },
       })
@@ -119,7 +140,14 @@ export async function GET(request: NextRequest) {
     }
 
     if (paymentMethod && paymentMethod !== 'all') {
-      query = query.eq('payment_method', paymentMethod)
+      const normalizedPaymentMethod = normalizePaymentMethod(paymentMethod)
+      if (normalizedPaymentMethod === 'debit_order') {
+        query = query.or('collection_method.eq.debit_order,collection_method.eq.individual_debit_order,collection_method.eq.group_debit_order,payment_method.eq.debit_order')
+      } else if (normalizedPaymentMethod === 'eft') {
+        query = query.or('collection_method.eq.eft,collection_method.eq.individual_eft,payment_method.eq.eft')
+      } else {
+        query = query.or(`collection_method.eq.${normalizedPaymentMethod},payment_method.eq.${normalizedPaymentMethod}`)
+      }
     }
 
     if (search) {
@@ -201,7 +229,7 @@ export async function GET(request: NextRequest) {
           policyNumber: member.member_number,
           product: member.plan_name || 'No Plan Assigned',
           planId: member.plan_id,
-          paymentMethod: member.payment_method || 'N/A',
+          paymentMethod: normalizePaymentMethod(member.collection_method || member.payment_method) || 'N/A',
           monthlyPremium: member.monthly_premium || 0,
           joinDate: member.start_date || member.activated_at || member.created_at,
           riskScore: 0,
@@ -230,7 +258,7 @@ export async function GET(request: NextRequest) {
               policyNumber: dep.member_number,
               product: member.plan_name || 'No Plan Assigned',
               planId: member.plan_id,
-              paymentMethod: 'N/A',
+              paymentMethod: normalizePaymentMethod(dep.collection_method || dep.payment_method) || 'N/A',
               monthlyPremium: 0,
               joinDate: dep.created_at,
               riskScore: 0,
@@ -284,6 +312,15 @@ export async function GET(request: NextRequest) {
       .not('plan_name', 'is', null)
 
     const uniquePlans = [...new Set(plans?.map((p) => p.plan_name) || [])]
+    const { data: paymentRows } = await supabase
+      .from('members')
+      .select('collection_method, payment_method')
+    const paymentMethods = [...new Set(
+      (paymentRows || [])
+        .flatMap((row: any) => [row.collection_method, row.payment_method])
+        .map((value: string | null | undefined) => normalizePaymentMethod(value))
+        .filter(Boolean)
+    )].sort() as string[]
 
     return NextResponse.json({
       members: transformedMembers,
@@ -302,7 +339,7 @@ export async function GET(request: NextRequest) {
       filters: {
         brokers: brokerRecords,
         plans: uniquePlans.sort(),
-        paymentMethods: ['A - MAG TAPE', 'B - BANK CASH'],
+        paymentMethods,
         statuses: ['active', 'pending', 'suspended', 'in_waiting'],
       },
     })

@@ -222,7 +222,7 @@ export default function Home() {
                 </Button>
               )}
               {loginOpen && (
-                <div className="relative z-50 translate-x-[3px] translate-y-[11px] text-right text-lg font-medium text-[#081b66]">
+                <div className="relative z-50 translate-x-[3px] translate-y-[11px] text-right text-[0.95rem] font-medium text-[#081b66]">
                   <span className="login-thinking-text">Sign-in detected</span>
                   <span className="inline-flex w-4 justify-start">
                     <span className="animate-pulse">..</span>

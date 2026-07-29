@@ -322,7 +322,7 @@ export function PlanSlider({ initialSlide = 0 }: { initialSlide?: number }) {
             {/* Header Row */}
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center gap-3">
-                <span className="text-xl font-bold text-navy-900">Altira Orbit</span>
+                <img src="/favicon.jpeg" alt="Altira emblem" className="h-10 w-10 rounded-xl object-contain" />
                 <div>
                   <h2 className="text-2xl font-bold text-navy-900">{currentPlan.name}</h2>
                   <p className="text-xs text-slate-600">{currentPlan.ageRange}</p>

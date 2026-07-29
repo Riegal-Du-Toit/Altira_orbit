@@ -120,18 +120,14 @@ export default function OnboardingLayout({
           {/* Logo */}
           <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
             {!sidebarCollapsed && (
-              <Link href="/onboarding" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">O</span>
-                </div>
-                <span className="text-lg font-bold text-gray-900">Orbit</span>
+              <Link href="/onboarding" className="flex items-center gap-3">
+                <img src="/favicon.jpeg" alt="Altira emblem" className="h-8 w-8 object-contain" />
+                <span className="text-xl font-semibold tracking-tight text-slate-900">Orbit</span>
               </Link>
             )}
             {sidebarCollapsed && (
               <Link href="/onboarding" className="flex items-center justify-center w-full">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">O</span>
-                </div>
+                <img src="/favicon.jpeg" alt="Altira emblem" className="h-8 w-8 object-contain" />
               </Link>
             )}
             <button

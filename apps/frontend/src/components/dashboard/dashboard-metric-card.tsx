@@ -45,14 +45,14 @@ export function DashboardMetricCard({
       <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent from-40% via-[var(--glow-color-via)] to-[var(--glow-color-to)] via-70% z-10 pointer-events-none" />
       <div className="absolute left-0 bottom-0 h-[2px] w-full bg-[var(--glow-color)] rounded-b shadow-[0_-1px_8px_var(--glow-color)] group-hover:translate-y-full transition-transform duration-200 z-20" />
       <CardContent className="pt-6 relative z-30">
-        <div className="flex items-center justify-between">
-          <div>
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
             <p className="text-sm text-gray-600">{title}</p>
-            <p className={`text-3xl font-bold mt-1 ${valueClassName ?? ''}`.trim()}>{value}</p>
+            <p className={`mt-1 text-3xl font-bold leading-none ${valueClassName ?? ''}`.trim()}>{value}</p>
             {subtitle ? <p className="text-xs text-gray-500 mt-1">{subtitle}</p> : null}
           </div>
           <div
-            className={`w-12 h-12 rounded-lg flex items-center justify-center ${iconBackgroundClassName ?? 'bg-white/80'}`}
+            className={`flex h-12 w-12 shrink-0 items-center justify-center self-start rounded-lg ${iconBackgroundClassName ?? 'bg-white/80'}`}
           >
             {icon}
           </div>

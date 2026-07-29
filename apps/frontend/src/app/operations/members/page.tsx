@@ -40,6 +40,19 @@ interface FilterOptions {
   statuses: string[];
 }
 
+function formatPaymentMethodLabel(method: string) {
+  const normalized = method.trim().toLowerCase();
+  if (normalized === 'debit_order') return 'Debit Order';
+  if (normalized === 'eft') return 'EFT';
+  if (normalized === 'individual_debit_order') return 'Individual Debit Order';
+  if (normalized === 'group_debit_order') return 'Group Debit Order';
+  if (normalized === 'individual_eft') return 'Individual EFT';
+  return method
+    .split('_')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
 export default function OperationsMembersPage() {
   const router = useRouter();
   const { user, loading: authLoading } = useAuth();
@@ -389,7 +402,7 @@ export default function OperationsMembersPage() {
                 >
                   <option value="">Click to select</option>
                   {filterOptions.paymentMethods.map(method => (
-                    <option key={method} value={method}>{method}</option>
+                    <option key={method} value={method}>{formatPaymentMethodLabel(method)}</option>
                   ))}
                 </select>
               </div>

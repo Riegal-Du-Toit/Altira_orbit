@@ -405,7 +405,6 @@ export default function AdminDashboardPage() {
               <DashboardMetricCard
                 title="Active Policies"
                 value={stats.activeMembers.toLocaleString()}
-                subtitle={`${stats.pendingMembers} pending • ${stats.suspendedMembers} suspended`}
                 valueClassName="text-green-600"
                 icon={<ShieldCheck className="w-6 h-6 text-green-600" />}
                 accentColor="rgba(16, 185, 129, 1)"
@@ -744,5 +743,4 @@ export default function AdminDashboardPage() {
     </SidebarLayout>
   );
 }
-
 
