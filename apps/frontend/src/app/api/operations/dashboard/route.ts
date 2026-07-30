@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAnyRole } from '@/lib/auth-server';
-import { buildCollectionSummary, fetchCollectionMembers, netcashSupabase } from '@/lib/netcash-operations';
+import {
+  buildCollectionSummary,
+  fetchCollectionMembers,
+  NETCASH_OPERATIONS_ROLES,
+  netcashSupabase,
+} from '@/lib/netcash-operations';
 
 export const dynamic = 'force-dynamic';
-
-const OPERATIONS_ROLES = ['operations_manager', 'finance_manager', 'admin', 'system_admin'];
 
 function todayRange() {
   const start = new Date();
@@ -27,7 +30,7 @@ async function countRows(
 
 export async function GET(request: NextRequest) {
   try {
-    await requireAnyRole(request, OPERATIONS_ROLES);
+    await requireAnyRole(request, NETCASH_OPERATIONS_ROLES);
 
     const { start, end } = todayRange();
     const members = await fetchCollectionMembers();
@@ -104,7 +107,7 @@ export async function GET(request: NextRequest) {
   } catch (error: any) {
     console.error('Error fetching operations dashboard:', error);
     const message = error?.message || 'Failed to load operations dashboard';
-    const status = message.includes('Access denied') ? 403 : message.includes('token') || message.includes('Authentication') ? 401 : 500;
+    const status = message.includes('Access denied') || message.includes('Authentication') ? 403 : 500;
     return NextResponse.json({ error: message }, { status });
   }
 }
