@@ -24,7 +24,6 @@ export default function DebitOrdersPage() {
   const [loading, setLoading] = useState(false);
   const [summary, setSummary] = useState<any>(null);
   const [batches, setBatches] = useState<any[]>([]);
-  const [todayBatches, setTodayBatches] = useState<any[]>([]);
   const [todayTransactions, setTodayTransactions] = useState<any[]>([]);
   const [transactions, setTransactions] = useState<any[]>([]);
   const [failedPayments, setFailedPayments] = useState<any[]>([]);

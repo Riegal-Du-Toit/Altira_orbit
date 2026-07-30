@@ -18,14 +18,50 @@ import {
   Clock
 } from 'lucide-react';
 
+type OperationsDashboardData = {
+  keyMetrics: {
+    pendingDebitOrders: number;
+    providerApplications: number;
+    policiesInArrears: number;
+    activeMembers: number;
+    activeProviders: number;
+    activeBrokers: number;
+  };
+  today: {
+    memberQueries: number;
+    claimsProcessed: number;
+    brokerRequests: number;
+    systemUptime: string;
+  };
+  performance: {
+    debitOrderSuccessRate: string;
+    openClaims: number;
+    pendingApplications: number;
+    activePaymentGroups: number;
+    collectionValue: number;
+    failedCollections: number;
+    failedAmount: number;
+  };
+};
+
+const getAuthHeaders = (): Record<string, string> => {
+  if (typeof window === 'undefined') return {};
+  const token = localStorage.getItem('auth_access_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
+const formatCurrency = (value: number | string | null | undefined) =>
+  `R${Number(value || 0).toLocaleString('en-ZA', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
+
 export default function OperationsDashboardPage() {
   const router = useRouter();
   const { user, loading, isAuthenticated } = useAuth();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [dashboardData, setDashboardData] = useState<OperationsDashboardData | null>(null);
+  const [dashboardLoading, setDashboardLoading] = useState(true);
+  const [dashboardError, setDashboardError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
@@ -33,7 +69,41 @@ export default function OperationsDashboardPage() {
     }
   }, [loading, isAuthenticated, router]);
 
-  if (loading) {
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    let cancelled = false;
+
+    const loadDashboard = async () => {
+      setDashboardLoading(true);
+      setDashboardError(null);
+
+      try {
+        const response = await fetch('/api/operations/dashboard', {
+          headers: getAuthHeaders(),
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to load dashboard data');
+        }
+
+        if (!cancelled) setDashboardData(data);
+      } catch (error: any) {
+        if (!cancelled) setDashboardError(error.message || 'Failed to load dashboard data');
+      } finally {
+        if (!cancelled) setDashboardLoading(false);
+      }
+    };
+
+    loadDashboard();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isAuthenticated]);
+
+  if (loading || dashboardLoading) {
     return (
       <SidebarLayout>
         <InlinePageLoading
@@ -49,19 +119,7 @@ export default function OperationsDashboardPage() {
     return null;
   }
 
-  const formatTimeAgo = (timestamp: string) => {
-    if (!mounted) return '';
-    
-    const now = new Date();
-    const time = new Date(timestamp);
-    const diffMs = now.getTime() - time.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMs / 3600000);
-
-    if (diffMins < 60) return `${diffMins}m ago`;
-    if (diffHours < 24) return `${diffHours}h ago`;
-    return time.toLocaleDateString();
-  };
+  const data = dashboardData;
 
   return (
     <SidebarLayout>
@@ -72,12 +130,18 @@ export default function OperationsDashboardPage() {
           <p className="text-gray-600 mt-1">Welcome back, {user?.firstName}! Here's your operational overview</p>
         </div>
 
+        {dashboardError && (
+          <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            {dashboardError}
+          </div>
+        )}
+
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <DashboardMetricCard
             title="Pending Debit Orders"
-            value="0"
-            subtitle="Ready to process"
+            value={String(data?.keyMetrics.pendingDebitOrders || 0)}
+            subtitle={`${formatCurrency(data?.performance.collectionValue)} current cycle`}
             icon={<CreditCard className="w-6 h-6 text-blue-600" />}
             accentColor="rgba(59, 130, 246, 1)"
             glowFrom="rgba(59, 130, 246, 0.075)"
@@ -88,7 +152,7 @@ export default function OperationsDashboardPage() {
 
           <DashboardMetricCard
             title="Provider Applications"
-            value="0"
+            value={String(data?.keyMetrics.providerApplications || 0)}
             subtitle="Pending approval"
             icon={<Building2 className="w-6 h-6 text-green-600" />}
             accentColor="rgba(16, 185, 129, 1)"
@@ -101,8 +165,8 @@ export default function OperationsDashboardPage() {
 
           <DashboardMetricCard
             title="Policies in Arrears"
-            value="0"
-            subtitle="Require action"
+            value={String(data?.keyMetrics.policiesInArrears || 0)}
+            subtitle={`${formatCurrency(data?.performance.failedAmount)} unresolved`}
             icon={<AlertCircle className="w-6 h-6 text-red-600" />}
             accentColor="rgba(239, 68, 68, 1)"
             glowFrom="rgba(239, 68, 68, 0.075)"
@@ -121,8 +185,8 @@ export default function OperationsDashboardPage() {
               <CardContent className="pt-6">
                 <div className="text-center">
                   <p className="text-sm text-gray-600">Member Queries</p>
-                  <p className="text-3xl font-bold mt-1">0</p>
-                  <p className="text-xs text-gray-500 mt-1">Resolved today</p>
+                  <p className="text-3xl font-bold mt-1">{data?.today.memberQueries || 0}</p>
+                  <p className="text-xs text-gray-500 mt-1">Logged today</p>
                 </div>
               </CardContent>
             </Card>
@@ -131,7 +195,7 @@ export default function OperationsDashboardPage() {
               <CardContent className="pt-6">
                 <div className="text-center">
                   <p className="text-sm text-gray-600">Claims Processed</p>
-                  <p className="text-2xl font-bold mt-1">0</p>
+                  <p className="text-2xl font-bold mt-1">{data?.today.claimsProcessed || 0}</p>
                   <p className="text-xs text-gray-500 mt-1">Today</p>
                 </div>
               </CardContent>
@@ -141,8 +205,8 @@ export default function OperationsDashboardPage() {
               <CardContent className="pt-6">
                 <div className="text-center">
                   <p className="text-sm text-gray-600">Broker Requests</p>
-                  <p className="text-2xl font-bold mt-1">0</p>
-                  <p className="text-xs text-gray-500 mt-1">Pending</p>
+                  <p className="text-2xl font-bold mt-1">{data?.today.brokerRequests || 0}</p>
+                  <p className="text-xs text-gray-500 mt-1">Last 30 days</p>
                 </div>
               </CardContent>
             </Card>
@@ -151,7 +215,7 @@ export default function OperationsDashboardPage() {
               <CardContent className="pt-6">
                 <div className="text-center">
                   <p className="text-sm text-gray-600">System Uptime</p>
-                  <p className="text-3xl font-bold mt-1 text-green-600">100%</p>
+                  <p className="text-3xl font-bold mt-1 text-green-600">{data?.today.systemUptime || '100%'}</p>
                   <p className="text-xs text-gray-500 mt-1">Last 24 hours</p>
                 </div>
               </CardContent>
@@ -228,8 +292,8 @@ export default function OperationsDashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-center py-8 text-gray-500">
-              <p className="text-sm">Collection calendar will be displayed here</p>
-              <p className="text-xs mt-1">Set 12 collection dates per year for each group</p>
+              <p className="text-sm">{data?.performance.activePaymentGroups || 0} active collection groups configured</p>
+              <p className="text-xs mt-1">Collection dates are managed from the payment groups workspace</p>
               <Button 
                 className="mt-4"
                 onClick={() => router.push('/operations/collection-calendar')}
@@ -251,7 +315,7 @@ export default function OperationsDashboardPage() {
               <div className="text-center py-8 text-gray-500">
                 <Clock className="w-12 h-12 mx-auto mb-2 opacity-50" />
                 <p className="text-sm">No recent activity</p>
-                <p className="text-xs mt-1">Activity will appear here as operations occur</p>
+                <p className="text-xs mt-1">Operational events will appear here as activity is logged</p>
               </div>
             </CardContent>
           </Card>
@@ -282,45 +346,45 @@ export default function OperationsDashboardPage() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Debit Order Success Rate</span>
-                  <span className="font-medium">N/A</span>
+                  <span className="font-medium">{data?.performance.debitOrderSuccessRate || '0%'}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Average Call Wait Time</span>
-                  <span className="font-medium">N/A</span>
+                  <span className="text-sm text-gray-600">Open Claims</span>
+                  <span className="font-medium">{data?.performance.openClaims || 0}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Claims Processing Time</span>
-                  <span className="font-medium">N/A</span>
+                  <span className="text-sm text-gray-600">Pending Applications</span>
+                  <span className="font-medium">{data?.performance.pendingApplications || 0}</span>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Member Satisfaction</span>
-                  <span className="font-medium">N/A</span>
+                  <span className="text-sm text-gray-600">Failed Collections</span>
+                  <span className="font-medium">{data?.performance.failedCollections || 0}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Provider Response Time</span>
-                  <span className="font-medium">N/A</span>
+                  <span className="text-sm text-gray-600">Collection Value</span>
+                  <span className="font-medium">{formatCurrency(data?.performance.collectionValue)}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Policy Lapse Rate</span>
-                  <span className="font-medium">0%</span>
+                  <span className="text-sm text-gray-600">Active Payment Groups</span>
+                  <span className="font-medium">{data?.performance.activePaymentGroups || 0}</span>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Active Members</span>
-                  <span className="font-medium">5</span>
+                  <span className="font-medium">{data?.keyMetrics.activeMembers || 0}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Active Providers</span>
-                  <span className="font-medium">0</span>
+                  <span className="font-medium">{data?.keyMetrics.activeProviders || 0}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Active Brokers</span>
-                  <span className="font-medium">0</span>
+                  <span className="font-medium">{data?.keyMetrics.activeBrokers || 0}</span>
                 </div>
               </div>
             </div>
