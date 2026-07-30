@@ -3,6 +3,12 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+const getAuthHeaders = (): Record<string, string> => {
+  if (typeof window === 'undefined') return {}
+  const token = localStorage.getItem('auth_access_token')
+  return token ? { Authorization: `Bearer ${token}` } : {}
+}
+
 export default function RunDebitOrdersPage() {
   const router = useRouter();
   const [summary, setSummary] = useState<any>(null);
@@ -21,8 +27,8 @@ export default function RunDebitOrdersPage() {
   const fetchData = async () => {
     try {
       const [summaryRes, dateRes] = await Promise.all([
-        fetch('/api/netcash/summary'),
-        fetch('/api/netcash/next-debit-date?daysAhead=2'),
+        fetch('/api/netcash/summary', { headers: getAuthHeaders() }),
+        fetch('/api/netcash/next-debit-date?daysAhead=2', { headers: getAuthHeaders() }),
       ]);
 
       const summaryData = await summaryRes.json();
@@ -96,6 +102,7 @@ export default function RunDebitOrdersPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...getAuthHeaders(),
         },
         body: JSON.stringify({
           actionDate: formattedDate,
@@ -110,8 +117,7 @@ export default function RunDebitOrdersPage() {
 
       const result = await response.json();
 
-      // Redirect to batch details
-      router.push(`/operations/debit-orders/${result.runId}`);
+      router.push(`/operations/debit-orders?batch=${encodeURIComponent(result.batch?.batch_number || result.runId)}`);
     } catch (error: any) {
       console.error('Error generating batch:', error);
       setError(error.message || 'Failed to generate batch');
