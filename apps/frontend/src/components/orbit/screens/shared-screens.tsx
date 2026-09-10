@@ -59,7 +59,7 @@ export function SharedScreens(props: SharedScreensProps) {
           <img src="/landing%20page%20svg.png" alt="Home and auto insurance" className="max-h-[14.52rem] w-[120%] max-w-none object-contain" />
         </div>
         <div className="mt-auto space-y-3">
-          <div className="flex justify-center py-1"><AnimatedSplashButton label="Show my price" onComplete={next} /></div>
+          <div className="flex justify-center py-1"><AnimatedSplashButton label="Get my price" onComplete={next} /></div>
           <p className="flex items-center justify-center gap-1 text-[9px] text-slate-500"><ShieldCheck className="h-3 w-3 text-[#1769ff]" /> Trusted. Secure. FCA compliant.</p>
         </div>
       </div>
