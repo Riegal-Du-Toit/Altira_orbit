@@ -4,6 +4,7 @@ This is the single documentation home for the Altira Orbit project.
 
 ## Start Here
 
+- [project/MODULAR_PRODUCT_BUILD_PLAN.md](./project/MODULAR_PRODUCT_BUILD_PLAN.md) - implementation plan for sellable dashboard packages
 - [project/CURRENT_DASHBOARD_ROLES.md](./project/CURRENT_DASHBOARD_ROLES.md) - current dashboard role definition
 - [project/CURRENT_INFRASTRUCTURE.md](./project/CURRENT_INFRASTRUCTURE.md) - current hosting, database, and environment direction
 - [project/MEDICAL_INSURER_OPERATING_MODEL_REFERENCE.md](./project/MEDICAL_INSURER_OPERATING_MODEL_REFERENCE.md) - current medical-insurer operating model reference
@@ -87,4 +88,4 @@ Local/private notes that should not be treated as public product documentation.
 
 ## Last Updated
 
-July 12, 2026
+September 6, 2026

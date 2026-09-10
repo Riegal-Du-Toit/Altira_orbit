@@ -12,6 +12,7 @@ import { PlanComparisonDemoted } from '@/components/landing-page/PlanComparisonD
 import { BottomCTA } from '@/components/landing-page/BottomCTA';
 import { Footer } from '@/components/landing-page/Footer';
 import { FunnelSection, FunnelSectionPreview } from '@/components/funnel/funnel-sections';
+import { HomeAutoDemo } from '@/components/landing-page/HomeAutoDemo';
 
 interface LandingPage {
   id: string;
@@ -37,6 +38,12 @@ export default function LandingPageView() {
 
   useEffect(() => {
     async function fetchLandingPage() {
+      if (slug === 'home-and-auto') {
+        setLoading(false);
+        document.title = 'Home and Auto';
+        return;
+      }
+
       try {
         const response = await fetch(`/api/public/landing-pages/${slug}`);
         
@@ -60,6 +67,10 @@ export default function LandingPageView() {
 
     fetchLandingPage();
   }, [slug]);
+
+  if (slug === 'home-and-auto' && !loading) {
+    return <HomeAutoDemo />;
+  }
 
   if (loading) {
     return (

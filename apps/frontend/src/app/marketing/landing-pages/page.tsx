@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { SidebarLayout } from '@/components/layout/sidebar-layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -40,7 +41,21 @@ interface LandingPage {
   };
 }
 
+const homeAutoDemo: LandingPage = {
+  id: 'demo-home-and-auto',
+  name: 'Home and Auto',
+  slug: 'home-and-auto',
+  title: 'Home and Auto',
+  description: 'Mobile-first quote journey for home and vehicle cover.',
+  template: 'mobile-demo',
+  status: 'draft',
+  created_at: new Date(0).toISOString(),
+  updated_at: new Date(0).toISOString(),
+  stats: { visits: 0, leads: 0, conversionRate: 0 },
+};
+
 export default function LandingPagesPage() {
+  const router = useRouter();
   const [selectedPage, setSelectedPage] = useState<string | null>(null);
   const [landingPages, setLandingPages] = useState<LandingPage[]>([]);
   const [loading, setLoading] = useState(true);
@@ -73,7 +88,7 @@ export default function LandingPagesPage() {
         }
       }));
 
-      setLandingPages(pagesWithStats);
+      setLandingPages([...pagesWithStats, homeAutoDemo]);
     } catch (err: any) {
       console.error('Fetch error:', err);
       setError(err.message);
@@ -133,11 +148,11 @@ export default function LandingPagesPage() {
             <p className="text-gray-600 mt-1">Build, manage, and optimize landing pages with A/B testing</p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline">
+            <Button variant="outline" onClick={() => router.push('/marketing/campaigns')}>
               <Layout className="w-4 h-4 mr-2" />
               New Funnel
             </Button>
-            <Button className="bg-purple-600 hover:bg-purple-700">
+            <Button className="bg-purple-600 hover:bg-purple-700" onClick={() => router.push('/marketing/campaigns')}>
               <Layout className="w-4 h-4 mr-2" />
               New Landing Page
             </Button>
@@ -209,7 +224,7 @@ export default function LandingPagesPage() {
               <div className="text-center py-12">
                 <Layout className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                 <p className="text-gray-600 mb-4">No landing pages yet</p>
-                <Button className="bg-purple-600 hover:bg-purple-700">
+                <Button className="bg-purple-600 hover:bg-purple-700" onClick={() => router.push('/marketing/campaigns')}>
                   <Layout className="w-4 h-4 mr-2" />
                   Create Your First Landing Page
                 </Button>

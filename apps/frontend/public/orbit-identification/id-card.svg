@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 220">
+  <rect width="180" height="220" rx="16" fill="#eff6ff"/>
+  <rect x="14" y="14" width="152" height="192" rx="12" fill="#fff" stroke="#bfdbfe"/>
+  <circle cx="90" cy="74" r="30" fill="#dbeafe"/>
+  <circle cx="90" cy="68" r="13" fill="#1769ff"/>
+  <path d="M62 104c6-20 50-20 56 0" fill="#1769ff"/>
+  <rect x="40" y="126" width="100" height="8" rx="4" fill="#0f172a"/>
+  <rect x="55" y="144" width="70" height="6" rx="3" fill="#94a3b8"/>
+  <text x="90" y="181" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#1769ff">ID</text>
+</svg>
