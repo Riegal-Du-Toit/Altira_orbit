@@ -158,7 +158,7 @@ export function CarScreens({ screen, form, setForm, next }: CarScreensProps) {
     const ready = form.registrationUploads.disc && form.registrationUploads.plate;
     return (
       <div className="space-y-5">
-        <ScreenIntro eyebrow="Vehicle details" title={<>Upload your<br />license disc</>} copy="Take a clear photo of your license disc and number plate." eyebrowClassName="text-[12px]" titleClassName="text-[28px]" copyClassName="text-[14px]" />
+        <ScreenIntro eyebrow="Vehicle details" title={<>Upload your<br />license disc</>} copy="Take a clear photo of your license disc and number plate." eyebrowClassName="text-[12px]" titleClassName="text-[28px] leading-[0.93]" copyClassName="text-[14px]" />
         <div className="space-y-[17px]">
           <input ref={registrationCameraRef} type="file" accept="image/*" capture="environment" className="hidden" aria-label="Take registration picture" onChange={addRegistrationImage} />
           <input ref={registrationGalleryRef} type="file" accept="image/*" className="hidden" aria-label="Choose registration picture" onChange={addRegistrationImage} />
